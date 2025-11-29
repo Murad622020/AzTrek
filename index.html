@@ -343,6 +343,46 @@
         color: white;
       }
 
+      /* Weather Search Styling */
+      .weather-search-container {
+        position: relative;
+        margin: 20px 0;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .weather-search-input {
+        width: 100%;
+        padding: 12px 45px 12px 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 25px;
+        font-size: 16px;
+        background: white;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .weather-search-input:focus {
+        outline: none;
+        border-color: #2a6e4f;
+        box-shadow: 0 4px 15px rgba(42, 110, 79, 0.2);
+      }
+
+      .search-icon {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 18px;
+        color: #666;
+        pointer-events: none;
+      }
+
+      .weather-region-hidden {
+        display: none !important;
+      }
+
       .ai-chat-container {
         position: fixed;
         bottom: 40px;
@@ -730,6 +770,16 @@
           <div id="weatherScreen" class="screen">
             <div class="screen-placeholder">
               <h2>Weather</h2>
+              <div class="weather-search-container">
+                <input
+                  type="text"
+                  id="weatherSearchInput"
+                  placeholder="Search weather by region..."
+                  class="weather-search-input"
+                  oninput="filterWeatherRegions()"
+                />
+                <span class="search-icon">🔍</span>
+              </div>
               <p>Loading...</p>
             </div>
           </div>
@@ -821,6 +871,7 @@
           rating: "Reytinq",
           region: "Bölgə",
           warning: "Xəbərdarlıq",
+          weatherSearchPlaceholder: "Regionla hava axtarın...",
 
           // Main feature cards
           trailDiscoveryTitle: "🗺️ Marşrut Kəşfi",
@@ -1056,6 +1107,7 @@
           rating: "Rating",
           region: "Region",
           warning: "Warning",
+          weatherSearchPlaceholder: "Search weather by region...",
 
           // Main feature cards
           trailDiscoveryTitle: "🗺️ Trail Discovery",
@@ -1517,6 +1569,25 @@
         updateLanguage();
       });
 
+      // Weather search functionality
+      function filterWeatherRegions() {
+        const searchTerm = document
+          .getElementById("weatherSearchInput")
+          .value.toLowerCase();
+        const weatherCards = document.querySelectorAll(
+          "#weatherScreen .detail-card"
+        );
+
+        weatherCards.forEach((card) => {
+          const regionName = card.querySelector("h3").textContent.toLowerCase();
+          if (regionName.includes(searchTerm)) {
+            card.classList.remove("weather-region-hidden");
+          } else {
+            card.classList.add("weather-region-hidden");
+          }
+        });
+      }
+
       function setLang(lang) {
         currentLang = lang;
 
@@ -1759,7 +1830,18 @@
             break;
 
           case "weatherScreen":
-            html += `⛅ ${t.navWeather}</h1><div class="grid-3">`;
+            html += `⛅ ${t.navWeather}</h1>
+            <div class="weather-search-container">
+              <input 
+                type="text" 
+                id="weatherSearchInput" 
+                placeholder="${t.weatherSearchPlaceholder}" 
+                class="weather-search-input"
+                oninput="filterWeatherRegions()"
+              />
+              <span class="search-icon">🔍</span>
+            </div>
+            <div class="grid-3">`;
             weatherData.regions.forEach((region) => {
               // Check if translation exists for this region
               const translatedRegion =
