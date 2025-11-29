@@ -1,0 +1,2026 @@
+<!DOCTYPE html>
+<html lang="az">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AzTrek - Azerbaijan Mountain Trekking</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #0d2b1e, #1a4d34, #2a6e4f);
+        min-height: 100vh;
+        padding: 20px;
+        overflow-x: auto;
+        color: #f0f8ff;
+      }
+
+      .container {
+        max-width: 1800px;
+        margin: 0 auto;
+        background: #ffffff;
+        border-radius: 30px;
+        overflow: hidden;
+        box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+        min-height: 900px;
+      }
+
+      .header {
+        background: linear-gradient(135deg, #0d2b1e, #1a4d34, #2a6e4f);
+        color: white;
+        padding: 25px 40px;
+        text-align: center;
+        position: relative;
+      }
+
+      .logo-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+        gap: 20px;
+      }
+
+      .logo {
+        height: 210px;
+        width: auto;
+        filter: drop-shadow(3px 3px 6px rgba(104, 88, 88, 0.3));
+        border-radius: 10px;
+      }
+
+      .header h1 {
+        font-size: 54px;
+        margin: 0;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+        font-weight: 800;
+        color: white;
+      }
+
+      .header p {
+        font-size: 22px;
+        opacity: 0.95;
+        font-weight: 300;
+        margin-top: 5px;
+      }
+
+      .main-content {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        min-height: 800px;
+      }
+
+      .sidebar {
+        background: linear-gradient(180deg, #1a4d34 0%, #0d2b1e 100%);
+        padding: 30px 20px;
+        border-right: 3px solid #2a6e4f;
+      }
+
+      .nav-section {
+        margin-bottom: 40px;
+      }
+
+      .nav-section h3 {
+        color: #f0f8ff;
+        font-size: 18px;
+        margin-bottom: 20px;
+        font-weight: 600;
+        border-bottom: 2px solid #2a6e4f;
+        padding-bottom: 10px;
+      }
+
+      .nav-item {
+        display: flex;
+        align-items: center;
+        padding: 15px 20px;
+        margin-bottom: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+        font-size: 16px;
+        font-weight: 500;
+        color: #f0f8ff;
+      }
+
+      .nav-item:hover {
+        transform: translateX(10px);
+        border-color: #2a6e4f;
+        box-shadow: 0 8px 25px rgba(42, 110, 79, 0.3);
+      }
+
+      .nav-item.active {
+        background: linear-gradient(135deg, #1a4d34, #2a6e4f);
+        color: white;
+        border-color: #1a4d34;
+      }
+
+      .nav-icon {
+        font-size: 24px;
+        margin-right: 15px;
+        width: 30px;
+        text-align: center;
+      }
+
+      .content {
+        padding: 40px;
+        background: #ffffff;
+        overflow-y: auto;
+        max-height: 800px;
+      }
+
+      .screen {
+        display: none;
+      }
+
+      .screen.active {
+        display: block;
+        animation: fadeIn 0.5s ease-in;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .screen-title {
+        font-size: 42px;
+        color: #1a4d34;
+        margin-bottom: 30px;
+        font-weight: 700;
+        border-bottom: 4px solid #2a6e4f;
+        padding-bottom: 15px;
+        display: inline-block;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+
+      .grid-4 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+
+      .card {
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        border: 2px solid #e6f2ed;
+        height: fit-content;
+        color: #333;
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        border-color: #2a6e4f;
+      }
+
+      .card h3 {
+        font-size: 24px;
+        color: #1a4d34;
+        margin-bottom: 15px;
+        font-weight: 700;
+      }
+
+      .card p {
+        color: #4a5568;
+        line-height: 1.7;
+        margin-bottom: 20px;
+        font-size: 16px;
+      }
+
+      .detail-card {
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        margin-bottom: 25px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        border: 2px solid #e6f2ed;
+        transition: all 0.3s ease;
+        color: #333;
+      }
+
+      .detail-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12);
+        border-color: #2a6e4f;
+      }
+
+      .detail-card h3 {
+        font-size: 28px;
+        color: #1a4d34;
+        margin-bottom: 15px;
+        font-weight: 700;
+      }
+
+      .trail-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 15px;
+        margin-bottom: 15px;
+        border: 3px solid #e6f2ed;
+      }
+
+      .detail-meta {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+      }
+
+      .meta-item {
+        background: linear-gradient(135deg, #1a4d34, #2a6e4f);
+        color: white;
+        padding: 12px 20px;
+        border-radius: 12px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .website-link {
+        display: inline-flex;
+        align-items: center;
+        background: linear-gradient(135deg, #1a4d34, #2a6e4f);
+        color: white;
+        padding: 15px 25px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 600;
+        margin-top: 15px;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+      }
+
+      .website-link:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(42, 110, 79, 0.4);
+      }
+
+      .map-link {
+        display: inline-flex;
+        align-items: center;
+        background: linear-gradient(135deg, #1a4d34 0%, #2a6e4f 100%);
+        color: white;
+        padding: 15px 25px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 600;
+        margin-top: 15px;
+        margin-left: 15px;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+      }
+
+      .map-link:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(42, 110, 79, 0.4);
+      }
+
+      .lang-switcher {
+        position: absolute;
+        top: 25px;
+        right: 30px;
+        display: flex;
+        gap: 15px;
+      }
+
+      .lang-btn {
+        padding: 10px 20px;
+        border-radius: 12px;
+        border: none;
+        background: white;
+        color: #1a4d34;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 14px;
+      }
+
+      .lang-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+      }
+
+      .lang-btn.active {
+        background: #1a4d34;
+        color: white;
+      }
+
+      .ai-chat-container {
+        position: fixed;
+        bottom: 40px;
+        right: 40px;
+        z-index: 1000;
+      }
+
+      .ai-chat-btn {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #1a4d34, #2a6e4f);
+        border: none;
+        border-radius: 50%;
+        color: white;
+        font-size: 40px;
+        cursor: pointer;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .ai-chat-btn:hover {
+        transform: scale(1.15);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      }
+
+      .ai-chat-box {
+        position: absolute;
+        bottom: 100px;
+        right: 0;
+        width: 500px;
+        height: 600px;
+        background: white;
+        border-radius: 25px;
+        box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+        display: none;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .ai-chat-box.active {
+        display: flex;
+        animation: slideUp 0.3s ease;
+      }
+
+      @keyframes slideUp {
+        from {
+          transform: translateY(20px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .ai-chat-header {
+        padding: 25px;
+        color: white;
+        background: linear-gradient(135deg, #1a4d34, #2a6e4f);
+        border-radius: 25px 25px 0 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .ai-chat-header h3 {
+        font-size: 24px;
+        font-weight: 600;
+      }
+
+      .ai-close-btn {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 30px;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+
+      .ai-close-btn:hover {
+        transform: scale(1.2);
+      }
+
+      .ai-chat-messages {
+        flex: 1;
+        overflow-y: auto;
+        padding: 25px;
+        background: #f0f8ff;
+      }
+
+      .ai-message {
+        margin-bottom: 20px;
+        padding: 20px;
+        border-radius: 20px;
+        max-width: 85%;
+        line-height: 1.6;
+        font-size: 16px;
+        animation: messageSlide 0.3s ease;
+      }
+
+      @keyframes messageSlide {
+        from {
+          transform: translateY(10px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .ai-message.bot {
+        background: white;
+        color: #1a4d34;
+        margin-right: auto;
+        border: 2px solid #e6f2ed;
+      }
+
+      .ai-message.user {
+        background: linear-gradient(135deg, #1a4d34, #2a6e4f);
+        color: white;
+        margin-left: auto;
+      }
+
+      .ai-chat-input {
+        display: flex;
+        gap: 15px;
+        padding: 25px;
+        border-top: 2px solid #e6f2ed;
+        background: white;
+      }
+
+      .ai-chat-input input {
+        flex: 1;
+        padding: 18px;
+        border: 2px solid #e6f2ed;
+        border-radius: 15px;
+        font-size: 16px;
+        outline: none;
+        transition: border-color 0.3s ease;
+        color: #333;
+      }
+
+      .ai-chat-input input:focus {
+        border-color: #2a6e4f;
+      }
+
+      .ai-send-btn {
+        background: linear-gradient(135deg, #1a4d34, #2a6e4f);
+        color: white;
+        border: none;
+        padding: 18px 30px;
+        border-radius: 15px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 16px;
+        transition: all 0.3s ease;
+      }
+
+      .ai-send-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(42, 110, 79, 0.4);
+      }
+
+      .ai-loading {
+        display: none;
+        text-align: center;
+        padding: 20px;
+        color: #2a6e4f;
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      .map-container {
+        height: 600px;
+        border-radius: 20px;
+        overflow: hidden;
+        margin: 30px 0;
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+      }
+
+      @media (max-width: 1920px) {
+        .container {
+          max-width: 1600px;
+        }
+      }
+
+      @media (max-width: 1600px) {
+        .container {
+          max-width: 1400px;
+        }
+        .grid-4 {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (max-width: 1400px) {
+        .container {
+          max-width: 1200px;
+        }
+        .grid-4 {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .grid-3 {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .header h1 {
+          font-size: 42px;
+        }
+
+        .logo {
+          height: 70px;
+        }
+
+        .logo-container {
+          flex-direction: column;
+          gap: 10px;
+        }
+      }
+
+      .difficulty-rating {
+        color: #2a6e4f;
+        font-size: 20px;
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <div class="header">
+        <div class="lang-switcher">
+          <button class="lang-btn active" onclick="setLang('az')">AZ</button>
+          <button class="lang-btn" onclick="setLang('en')">EN</button>
+        </div>
+
+        <div class="logo-container">
+          <img src="logo.png" alt="AzTrek Logo" class="logo" />
+          <!-- <h1>AzTrek</h1> -->
+        </div>
+        <p id="headerSubtitle"></p>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+          <div class="nav-section">
+            <h3 id="navMain">MAIN</h3>
+            <div class="nav-item active" onclick="showScreen('homeScreen')">
+              <span class="nav-icon">🏠</span>
+              <span id="navHome">Home</span>
+            </div>
+          </div>
+
+          <div class="nav-section">
+            <h3 id="navExplore">EXPLORE</h3>
+            <div class="nav-item" onclick="showScreen('trailsScreen')">
+              <span class="nav-icon">🗺</span>
+              <span id="navTrails">Trekking Trails</span>
+            </div>
+            <div class="nav-item" onclick="showScreen('guidesScreen')">
+              <span class="nav-icon">👨‍🦯</span>
+              <span id="navGuides">Guides & Tours</span>
+            </div>
+            <div class="nav-item" onclick="showScreen('gearScreen')">
+              <span class="nav-icon">🎒</span>
+              <span id="navGear">Gear & Equipment</span>
+            </div>
+          </div>
+
+          <div class="nav-section">
+            <h3 id="navTravel">INFO</h3>
+            <div class="nav-item" onclick="showScreen('weatherScreen')">
+              <span class="nav-icon">⛅</span>
+              <span id="navWeather">Weather</span>
+            </div>
+            <div class="nav-item" onclick="showScreen('mapScreen')">
+              <span class="nav-icon">🗾</span>
+              <span id="navMap">Interactive Map</span>
+            </div>
+          </div>
+
+          <div class="nav-section">
+            <h3 id="navInfo">COMMUNITY</h3>
+            <div class="nav-item" onclick="showScreen('rulesScreen')">
+              <span class="nav-icon">ℹ</span>
+              <span id="navRules">Rules & Tips</span>
+            </div>
+            <div class="nav-item" onclick="showScreen('communityScreen')">
+              <span class="nav-icon">👥</span>
+              <span id="navCommunity">Join Community</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content">
+          <!-- Home Screen -->
+          <div id="homeScreen" class="screen active">
+            <h1 class="screen-title" id="homeTitle">Welcome to AzTrek! 🏔️</h1>
+
+            <div class="grid-3">
+              <div class="card">
+                <h3 id="trailDiscoveryTitle">🗺️ Trail Discovery</h3>
+                <p id="trailDiscoveryDesc">
+                  Explore hundreds of carefully mapped mountain trails across
+                  Azerbaijan with detailed information and points of interest.
+                </p>
+              </div>
+              <div class="card">
+                <h3 id="expertGuidesTitle">👨‍🦯 Expert Guides</h3>
+                <p id="expertGuidesDesc">
+                  Connect with certified local guides who know the mountains and
+                  can ensure a safe, memorable trekking experience.
+                </p>
+              </div>
+              <div class="card">
+                <h3 id="qualityGearTitle">🎒 Quality Gear</h3>
+                <p id="qualityGearDesc">
+                  Find and rent essential trekking equipment from trusted
+                  providers across Azerbaijan.
+                </p>
+              </div>
+            </div>
+
+            <div class="grid-2">
+              <div class="card">
+                <h3 id="interactiveMapsTitle">🗾 Interactive Maps</h3>
+                <p id="interactiveMapsDesc">
+                  Explore Azerbaijan's mountain trails with our detailed
+                  interactive mapping system.
+                </p>
+                <button
+                  class="map-link"
+                  onclick="showScreen('mapScreen')"
+                  id="openMaps"
+                >
+                  Open Maps
+                </button>
+              </div>
+              <div class="card">
+                <h3 id="trekkingCommunityTitle">👥 Trekking Community</h3>
+                <p id="trekkingCommunityDesc">
+                  Join our growing community of mountain enthusiasts, share
+                  experiences and plan adventures together.
+                </p>
+                <button
+                  class="map-link"
+                  onclick="joinCommunity()"
+                  id="joinCommunityBtn"
+                >
+                  Join Community
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Other Screens -->
+          <div id="trailsScreen" class="screen">
+            <div class="screen-placeholder">
+              <h2>Trekking Trails</h2>
+              <p>Loading...</p>
+            </div>
+          </div>
+          <div id="guidesScreen" class="screen">
+            <div class="screen-placeholder">
+              <h2>Guides & Tours</h2>
+              <p>Loading...</p>
+            </div>
+          </div>
+          <div id="gearScreen" class="screen">
+            <div class="screen-placeholder">
+              <h2>Gear & Equipment</h2>
+              <p>Loading...</p>
+            </div>
+          </div>
+          <div id="weatherScreen" class="screen">
+            <div class="screen-placeholder">
+              <h2>Weather</h2>
+              <p>Loading...</p>
+            </div>
+          </div>
+          <div id="rulesScreen" class="screen">
+            <div class="screen-placeholder">
+              <h2>Rules & Tips</h2>
+              <p>Loading...</p>
+            </div>
+          </div>
+          <div id="communityScreen" class="screen">
+            <div class="screen-placeholder">
+              <h2>Community</h2>
+              <p>Loading...</p>
+            </div>
+          </div>
+          <div id="mapScreen" class="screen">
+            <div class="screen-placeholder">
+              <h2>Interactive Map</h2>
+              <p>Loading...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Chat -->
+    <div class="ai-chat-container">
+      <button class="ai-chat-btn" onclick="toggleAIChat()">🤖</button>
+      <div class="ai-chat-box" id="aiChatBox">
+        <div class="ai-chat-header">
+          <h3 id="aiAssistantTitle">🤖 AzTrek AI Assistant</h3>
+          <button class="ai-close-btn" onclick="toggleAIChat()">×</button>
+        </div>
+        <div class="ai-chat-messages" id="aiMessages">
+          <div class="ai-message bot" id="aiWelcomeMessage">
+            Hello! I am AzTrek AI assistant. 🏔️<br /><br />
+            Do you have any questions about mountain trekking in Azerbaijan? You
+            can ask about trails, guides, gear, and more!
+          </div>
+        </div>
+        <div class="ai-loading" id="aiLoading">
+          💭 AI is preparing response...
+        </div>
+        <div class="ai-chat-input">
+          <input
+            type="text"
+            id="aiInput"
+            placeholder="Type your question..."
+            onkeypress="handleKeyPress(event)"
+          />
+          <button class="ai-send-btn" onclick="sendAIMessage()">Send</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Language management
+      let currentLang = "az"; // Default to Azerbaijani
+      const translations = {
+        az: {
+          headerSubtitle: "",
+          homeTitle: "AzTrek-ə Xoş Gəlmisiniz! 🏔️",
+          navMain: "ƏSAS",
+          navHome: "Ana Səhifə",
+          navExplore: "KƏŞF ET",
+          navTrails: "Trekkinq Marşrutları",
+          navGuides: "Bələdçilər & Turlar",
+          navGear: "Avadanlıq",
+          navTravel: "MƏLUMAT",
+          navWeather: "Hava Məlumatı",
+          navMap: "İnteraktiv Xəritə",
+          navInfo: "CƏMİYYƏT",
+          navRules: "Qaydalar və Məsləhətlər",
+          navCommunity: "Cəmiyyətə Qoşul",
+          officialWebsite: "Rəsmi Sayt",
+          moreInfo: "Ətraflı Məlumat",
+          difficulty: "Çətinlik Səviyyəsi",
+          length: "Uzunluq",
+          elevation: "Yüksəklik",
+          bestSeason: "Ən Yaxşı Mövsüm",
+          viewMap: "Xəritəyə Bax",
+          bookGuide: "Bələdçi Sifariş Et",
+          rentGear: "Avadanlıq İcarəsi",
+          checkWeather: "Havanı Yoxla",
+          joinCommunity: "Cəmiyyətə Qoşul",
+          contactGuide: "Bələdçi ilə Əlaqə",
+          location: "Yer",
+          price: "Qiymət",
+          rating: "Reytinq",
+          region: "Bölgə",
+          warning: "Xəbərdarlıq",
+
+          // Main feature cards
+          trailDiscoveryTitle: "🗺️ Marşrut Kəşfi",
+          trailDiscoveryDesc:
+            "Ətraflı məlumat və maraqlı yerlər ilə Azərbaycan boyunca yüzlərlə diqqətlə xəritələnmiş dağ marşrutlarını kəşf edin.",
+          expertGuidesTitle: "👨‍🦯 Peşəkar Bələdçilər",
+          expertGuidesDesc:
+            "Dağları yaxşı bilən və təhlükəsiz, unudulmaz trekkinq təcrübəsini təmin edə bilən sertifikatlı yerli bələdçilərlə əlaqə saxlayın.",
+          qualityGearTitle: "🎒 Keyfiyyətli Avadanlıq",
+          qualityGearDesc:
+            "Azərbaycan boyunca etibarlı təchizatçılardan vacib trekkinq avadanlıqlarını tapın və icarəyə götürün.",
+
+          // Interactive sections
+          interactiveMapsTitle: "🗾 İnteraktiv Xəritələr",
+          interactiveMapsDesc:
+            "Ətraflı interaktiv xəritə sistemimiz ilə Azərbaycanın dağ marşrutlarını kəşf edin.",
+          openMaps: "Xəritələri Aç",
+          trekkingCommunityTitle: "👥 Trekkinq Cəmiyyəti",
+          trekkingCommunityDesc:
+            "Böyüyən dağ həvəskarları cəmiyyətimizə qoşulun, təcrübələrinizi bölüşün və birlikdə macəralar planlayın.",
+          joinCommunityBtn: "Cəmiyyətə Qoşul",
+
+          // AI Chat
+          aiWelcomeMsg:
+            "Salam! Mən AzTrek AI köməkçisiyəm. 🏔️<br/><br/>Azərbaycanda dağ trekkini haqqında sualınız varmı? Marşrutlar, bələdçilər, avadanlıq və daha çox şey barədə soruşa bilərsiniz!",
+          aiPlaceholder: "Sualınızı yazın...",
+          aiSendBtn: "Göndər",
+          aiLoading: "💭 AI cavab hazırlayır...",
+          aiAssistantTitle: "🤖 AzTrek AI Köməkçisi",
+
+          // Trail data translations
+          trailsData: {
+            "Shahdag Mountain Trail": {
+              name: "Şahdağ Dağ Marşrutu",
+              desc: "Marşrut boyunca müxtəlif flora və fauna ilə Böyük Qafqazın nəfəsəlverici mənzərələri. Təcrübəli trekkinçilər üçün mükəmməl.",
+              region: "Qusar",
+            },
+            "Khinalig Village Trek": {
+              name: "Xınalıq Kənd Marşrutu",
+              desc: "Unikal mədəni görüşlərlə Azərbaycanın ən qədim yaşayış yerlərindən birini kəşf edin. Orta çətinlik.",
+              region: "Quba",
+            },
+            "Goygol National Park": {
+              name: "Göygöl Milli Parkı",
+              desc: "Meşələr və dağlarla əhatə olunmuş gözəl alp gölü. Başlayanlar üçün uyğun yaxşı işarələnmiş marşrutlar.",
+              region: "Göygöl",
+            },
+            "Tufandag Mountain": {
+              name: "Tufandağ",
+              desc: "Başlanğıc nöqtəsinə kanatla yol çıxışı ilə çətin dırmaşma. Ətraf vadilərin möhtəşəm mənzərələri.",
+              region: "Qəbələ",
+            },
+            "Lahij Copper Trail": {
+              name: "Lahıc Mis Yolu",
+              desc: "Qədim mis emalatxanalarını birləşdirən tarixi marşrut. Orta fiziki çətinliklə mədəni təcrübə.",
+              region: "İsmayıllı",
+            },
+            "Gizilgaya Peak": {
+              name: "Qızılqaya Zirvəsi",
+              desc: "Texniki hissələri olan inkişaf etmiş trekkinq marşrutu. Lazımi avadanlıq və təcrübə tələb edir.",
+              region: "Şamaxı",
+            },
+          },
+
+          // Guides data translations
+          guidesData: {
+            "Mountain Guides Azerbaijan": {
+              name: "Azərbaycan Dağ Bələdçiləri",
+              location: "Bakı",
+              features:
+                "Sertifikatlaşdırılmış bələdçilər, avadanlıq icarəsi, nəqliyyat daxildir.",
+            },
+            "Caucasus Trekking Club": {
+              name: "Qafqaz Trekkinq Klubu",
+              location: "Qəbələ",
+              features: "Qrup turları, fotoçəkmə təlimi, mədəni məlumatlar.",
+            },
+            "Azerbaijan Adventure Tours": {
+              name: "Azərbaycan Macəra Turları",
+              location: "Şəki",
+              features:
+                "Çoxgünlü ekspedisiyalar, düşərgə avadanlığı, yerli mətbəx.",
+            },
+            "Eco Trek Azerbaijan": {
+              name: "Eko Trek Azərbaycan",
+              location: "Quba",
+              features:
+                "Ekoloji təmiz turlar, kiçik qruplar, vəhşi təbiət müşahidəsi.",
+            },
+          },
+
+          // Gear data translations
+          gearData: {
+            "Hiking Boots": {
+              name: "Yürüyüş Ayaqqabıları",
+              desc: "Suya davamlı, ayaq biləyinə dəstək verən dağ ayaqqabıları.",
+            },
+            "Trekking Poles": {
+              name: "Trekkinq Çubuqları",
+              desc: "Sabitlik üçün tənzimlənən karbon fiber çubuqları.",
+            },
+            Backpack: {
+              name: "Çanta",
+              desc: "35-50L suya davamlı bel dəstəkli çanta.",
+            },
+            "Sleeping Bag": {
+              name: "Yataq Çantası",
+              desc: "Dağ şəraitinə uyğun -5°C temperatur üçün.",
+            },
+            Tent: {
+              name: "Çadır",
+              desc: "2-3 nəfərlik dörd mövsüm dağ çadırı.",
+            },
+            "GPS Device": {
+              name: "GPS Cihazı",
+              desc: "Sağlamlıq qoruyucu GPS və kompas.",
+            },
+          },
+
+          // Weather data translations
+          weatherData: {
+            "Greater Caucasus": {
+              name: "Böyük Qafqaz",
+              warning: "Heç biri",
+            },
+            "Lesser Caucasus": {
+              name: "Kiçik Qafqaz",
+              warning: "Heç biri",
+            },
+            "Gabala Region": {
+              name: "Qəbələ Bölgəsi",
+              warning: "Heç biri",
+            },
+            "Guba Region": {
+              name: "Quba Bölgəsi",
+              warning: "Cığır sürüşkən ola bilər",
+            },
+            "Shamakhi Region": {
+              name: "Şamaxı Bölgəsi",
+              warning: "Heç biri",
+            },
+            "Sheki Region": {
+              name: "Şəki Bölgəsi",
+              warning: "Heç biri",
+            },
+          },
+
+          // Rules data translations
+          rulesData: {
+            "Leave No Trace": {
+              title: "İz buraxma",
+              text: "Bütün zibli götür, işarələnmiş yollarda qal və vəhşi təbiətə hörmət et.",
+            },
+            "Weather Preparedness": {
+              title: "Hava şəraiti hazırlığı",
+              text: "Hava proqnozlarını yoxla və dağ şəraitindəki ani dəyişikliklərə hazır ol.",
+            },
+            "Proper Equipment": {
+              title: "Uyğun avadanlıq",
+              text: "Həmişə naviqasiya, ilk yardım və təcili yardım ləvazimatları daxil olmaqla vacib avadanlıqları götür.",
+            },
+            "Local Regulations": {
+              title: "Yerli qaydalar",
+              text: "Qorunan ərazilərə hörmət et, lazımi icazələr al və yerli qaydalari izlə.",
+            },
+            "Group Safety": {
+              title: "Qrup təhlükəsizliyi",
+              text: "Uzaq ərazilərdə heç vaxt tək gəzmə və kiməsə marşrutunu bildir.",
+            },
+            "Cultural Respect": {
+              title: "Mədəni hörmət",
+              text: "Dağ kəndlərində yerli adət-ənənələrə, ənənələrə və şəxsi mülkiyyətə hörmət et.",
+            },
+          },
+
+          // Community data translations
+          communityData: {
+            "Weekly Group Hikes": {
+              name: "Weekly Group Hikes",
+              desc: "Hər şənbə müxtəlif regionlarda təşkil etdiyimiz qrup gəzintilərində iştirak et.",
+            },
+            "Trail Maintenance": {
+              name: "Cığır baxımı",
+              desc: "Cığır baxımı və qorunma layihələri üçün könüllü ol.",
+            },
+            "Photography Club": {
+              name: "Fotoqrafiya klubu",
+              desc: "Dağ fotoqraflarını paylaş və fotoqrafiya ekspedisiyalarında iştirak et.",
+            },
+            "Beginner Workshops": {
+              name: "Başlayıcı seminarları",
+              desc: "Aylıq seminarlarımızda vacib trekkinq bacarıqlarını öyrən.",
+            },
+            "Mountain Festivals": {
+              name: "Dağ festivalları",
+              desc: "Mövsümi dağ festivalları və mədəni tədbirlərdə iştirak et.",
+            },
+            "Online Forum": {
+              name: "Onlayn forum",
+              desc: "Aktiv onlayn cəmiyyətimizdə həmyolçu trekkinçilərlə əlaqə qur.",
+            },
+          },
+        },
+        en: {
+          headerSubtitle: "",
+          homeTitle: "Welcome to AzTrek! 🏔️",
+          navMain: "MAIN",
+          navHome: "Home",
+          navExplore: "EXPLORE",
+          navTrails: "Trekking Trails",
+          navGuides: "Guides & Tours",
+          navGear: "Gear & Equipment",
+          navTravel: "INFO",
+          navWeather: "Weather Info",
+          navMap: "Interactive Map",
+          navInfo: "COMMUNITY",
+          navRules: "Rules & Tips",
+          navCommunity: "Join Community",
+          officialWebsite: "Official Website",
+          moreInfo: "More Information",
+          difficulty: "Difficulty Level",
+          length: "Length",
+          elevation: "Elevation",
+          bestSeason: "Best Season",
+          viewMap: "View Map",
+          bookGuide: "Book Guide",
+          rentGear: "Rent Equipment",
+          checkWeather: "Check Weather",
+          joinCommunity: "Join Community",
+          contactGuide: "Contact Guide",
+          location: "Location",
+          price: "Price",
+          rating: "Rating",
+          region: "Region",
+          warning: "Warning",
+
+          // Main feature cards
+          trailDiscoveryTitle: "🗺️ Trail Discovery",
+          trailDiscoveryDesc:
+            "Explore hundreds of carefully mapped mountain trails across Azerbaijan with detailed information and points of interest.",
+          expertGuidesTitle: "👨‍🦯 Expert Guides",
+          expertGuidesDesc:
+            "Connect with certified local guides who know the mountains and can ensure a safe, memorable trekking experience.",
+          qualityGearTitle: "🎒 Quality Gear",
+          qualityGearDesc:
+            "Find and rent essential trekking equipment from trusted providers across Azerbaijan.",
+
+          // Interactive sections
+          interactiveMapsTitle: "🗾 Interactive Maps",
+          interactiveMapsDesc:
+            "Explore Azerbaijan's mountain trails with our detailed interactive mapping system.",
+          openMaps: "Open Maps",
+          trekkingCommunityTitle: "👥 Trekking Community",
+          trekkingCommunityDesc:
+            "Join our growing community of mountain enthusiasts, share experiences and plan adventures together.",
+          joinCommunityBtn: "Join Community",
+
+          // AI Chat
+          aiWelcomeMsg:
+            "Hello! I am AzTrek AI assistant. 🏔️<br/><br/>Do you have any questions about mountain trekking in Azerbaijan? You can ask about trails, guides, gear, and more!",
+          aiPlaceholder: "Type your question...",
+          aiSendBtn: "Send",
+          aiLoading: "💭 AI is preparing response...",
+          aiAssistantTitle: "🤖 AzTrek AI Assistant",
+
+          // Trail data translations (keeps original English names as reference)
+          trailsData: {
+            "Shahdag Mountain Trail": {
+              name: "Shahdag Mountain Trail",
+              desc: "Breathtaking views of the Greater Caucasus with diverse flora and fauna along the route. Perfect for experienced trekkers.",
+              region: "Qusar",
+            },
+            "Khinalig Village Trek": {
+              name: "Khinalig Village Trek",
+              desc: "Explore one of Azerbaijan's oldest continuously inhabited villages with unique cultural insights. Moderate difficulty.",
+              region: "Quba",
+            },
+            "Goygol National Park": {
+              name: "Goygol National Park",
+              desc: "Beautiful alpine lake surrounded by forests and mountains. Well-marked trails suitable for beginners.",
+              region: "Goygol",
+            },
+            "Tufandag Mountain": {
+              name: "Tufandag Mountain",
+              desc: "Challenging climb with cable car access to starting point. Spectacular views of the surrounding valleys.",
+              region: "Gabala",
+            },
+            "Lahij Copper Trail": {
+              name: "Lahij Copper Trail",
+              desc: "Historical trail connecting ancient copper workshops. Cultural experience with moderate physical challenge.",
+              region: "Ismayilli",
+            },
+            "Gizilgaya Peak": {
+              name: "Gizilgaya Peak",
+              desc: "Advanced trekking route with technical sections. Requires proper equipment and experience.",
+              region: "Shamakhi",
+            },
+          },
+
+          // Guides data translations
+          guidesData: {
+            "Mountain Guides Azerbaijan": {
+              name: "Mountain Guides Azerbaijan",
+              location: "Baku",
+              features:
+                "Certified guides, equipment rental, transportation included.",
+            },
+            "Caucasus Trekking Club": {
+              name: "Caucasus Trekking Club",
+              location: "Gabala",
+              features: "Group tours, photography guidance, cultural insights.",
+            },
+            "Azerbaijan Adventure Tours": {
+              name: "Azerbaijan Adventure Tours",
+              location: "Sheki",
+              features:
+                "Multi-day expeditions, camping equipment, local cuisine.",
+            },
+            "Eco Trek Azerbaijan": {
+              name: "Eco Trek Azerbaijan",
+              location: "Quba",
+              features: "Eco-friendly tours, small groups, wildlife spotting.",
+            },
+          },
+
+          // Gear data translations
+          gearData: {
+            "Hiking Boots": {
+              name: "Hiking Boots",
+              desc: "Waterproof, ankle-support hiking boots for mountain terrain.",
+            },
+            "Trekking Poles": {
+              name: "Trekking Poles",
+              desc: "Adjustable carbon fiber trekking poles for stability.",
+            },
+            Backpack: {
+              name: "Backpack",
+              desc: "35-50L waterproof backpack with hip support.",
+            },
+            "Sleeping Bag": {
+              name: "Sleeping Bag",
+              desc: "Cold weather sleeping bag rated to -5°C.",
+            },
+            Tent: {
+              name: "Tent",
+              desc: "2-3 person four-season mountain tent.",
+            },
+            "GPS Device": {
+              name: "GPS Device",
+              desc: "Rugged GPS unit with compass backup.",
+            },
+          },
+
+          // Weather data translations
+          weatherData: {
+            "Greater Caucasus": {
+              name: "Greater Caucasus",
+              warning: "None",
+            },
+            "Lesser Caucasus": {
+              name: "Lesser Caucasus",
+              warning: "None",
+            },
+            "Gabala Region": {
+              name: "Gabala Region",
+              warning: "None",
+            },
+            "Guba Region": {
+              name: "Guba Region",
+              warning: "Trail may be slippery",
+            },
+            "Shamakhi Region": {
+              name: "Shamakhi Region",
+              warning: "None",
+            },
+            "Sheki Region": {
+              name: "Sheki Region",
+              warning: "None",
+            },
+          },
+
+          // Rules data translations
+          rulesData: {
+            "Leave No Trace": {
+              title: "Leave No Trace",
+              text: "Pack out all trash, stay on marked trails, and respect wildlife.",
+            },
+            "Weather Preparedness": {
+              title: "Weather Preparedness",
+              text: "Check weather forecasts and be prepared for sudden changes in mountain conditions.",
+            },
+            "Proper Equipment": {
+              title: "Proper Equipment",
+              text: "Always carry essential gear including navigation, first aid, and emergency supplies.",
+            },
+            "Local Regulations": {
+              title: "Local Regulations",
+              text: "Respect protected areas, obtain necessary permits, and follow local guidelines.",
+            },
+            "Group Safety": {
+              title: "Group Safety",
+              text: "Never hike alone in remote areas and inform someone of your itinerary.",
+            },
+            "Cultural Respect": {
+              title: "Cultural Respect",
+              text: "Respect local customs, traditions, and private property in mountain villages.",
+            },
+          },
+
+          // Community data translations
+          communityData: {
+            "Weekly Group Hikes": {
+              name: "Weekly Group Hikes",
+              desc: "Join our organized group hikes every Saturday in different regions.",
+            },
+            "Trail Maintenance": {
+              name: "Trail Maintenance",
+              desc: "Volunteer for trail maintenance and conservation projects.",
+            },
+            "Photography Club": {
+              name: "Photography Club",
+              desc: "Share your mountain photography and join photography expeditions.",
+            },
+            "Beginner Workshops": {
+              name: "Beginner Workshops",
+              desc: "Learn essential trekking skills in our monthly workshops.",
+            },
+            "Mountain Festivals": {
+              name: "Mountain Festivals",
+              desc: "Participate in seasonal mountain festivals and cultural events.",
+            },
+            "Online Forum": {
+              name: "Online Forum",
+              desc: "Connect with fellow trekkers in our active online community.",
+            },
+          },
+        },
+      };
+
+      // Mountain Trekking Data
+      const data = {
+        trails: [
+          {
+            name: "Shahdag Mountain Trail",
+            region: "Qusar",
+            desc: "Breathtaking views of the Greater Caucasus with diverse flora and fauna along the route. Perfect for experienced trekkers.",
+            difficulty: "⭐⭐⭐⭐",
+            length: "18km",
+            elevation: "2200m",
+            season: "May-October",
+            image:
+              "data:image/jpeg;base64,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",
+          },
+          {
+            name: "Khinalig Village Trek",
+            region: "Quba",
+            desc: "Explore one of Azerbaijan's oldest continuously inhabited villages with unique cultural insights. Moderate difficulty.",
+            difficulty: "⭐⭐⭐",
+            length: "8km",
+            elevation: "2350m",
+            season: "April-November",
+            image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTm7n9w4LB6_mzo_BspayyHoKb0ns4D8YUISA&s",
+          },
+          {
+            name: "Goygol National Park",
+            region: "Goygol",
+            desc: "Beautiful alpine lake surrounded by forests and mountains. Well-marked trails suitable for beginners.",
+            difficulty: "⭐⭐",
+            length: "12km",
+            elevation: "1500m",
+            season: "March-November",
+            image:
+              "data:image/jpeg;base64,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",
+          },
+          {
+            name: "Tufandag Mountain",
+            region: "Gabala",
+            desc: "Challenging climb with cable car access to starting point. Spectacular views of the surrounding valleys.",
+            difficulty: "⭐⭐⭐⭐⭐",
+            length: "15km",
+            elevation: "2800m",
+            season: "June-September",
+            image:
+              "https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcQL5OcXWzVgHenwsrBFRMRx3-wKu-j6_Au9yMEzGzY5Ca1vJ-fCZYEJGJP3dXGoLVEkpeho9quWFJ4RcpCBa5ZVZZo&s=19",
+          },
+          {
+            name: "Lahij Copper Trail",
+            region: "Ismayilli",
+            desc: "Historical trail connecting ancient copper workshops. Cultural experience with moderate physical challenge.",
+            difficulty: "⭐⭐⭐",
+            length: "10km",
+            elevation: "1200m",
+            season: "All year",
+            image:
+              "https://wander-lush.org/wp-content/uploads/2024/06/Emily-Lush-Lahic-Azerbaijan-bridge.jpg",
+          },
+          {
+            name: "Gizilgaya Peak",
+            region: "Shamakhi",
+            desc: "Advanced trekking route with technical sections. Requires proper equipment and experience.",
+            difficulty: "⭐⭐⭐⭐⭐",
+            length: "22km",
+            elevation: "3200m",
+            season: "July-September",
+            image:
+              "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxIQEBAQEBMQFRUXFxAYFRAVEBAVFRUVGRUZFxUWFRUYHSghGBolGxYVITEhJSkrLi8uFx8zODUtNygtLisBCgoKDg0OGhAQGisdHiUtLS0tLSstLS0tLS0tLS0tLS0tLS0vLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAMIBAwMBIgACEQEDEQH/xAAbAAACAwEBAQAAAAAAAAAAAAACAwABBAUGB//EADwQAAIBAwMCBAQDBwMCBwAAAAECEQADIQQSMUFRBRMiYTJxgZEGQqEjUmKxwdHwFHLhsvEVFjNTY4LC/8QAGgEBAQEBAQEBAAAAAAAAAAAAAAECAwQFBv/EACwRAQACAQMEAgADCQAAAAAAAAABEQIDITEEEkFRExQFMqEVIkJSYWJxkeH/2gAMAwEAAhEDEQA/AMBFAaaRQEV+pfHLIoTTCKEioF1RFGRQ1lbAaqjIoSKigIoSKOqIqBZFCaYRQkVAFVFFFVUUMVRFHFVFFBFSiipFAFSjiq20UNSiir20AVdFFXFEDFQCiiriqBiriiirigECiAq4qwKtJagKICpFEBVpFRV1cVdKR0SKEimkUJFdZZJIoSKcRQEVlSiKoimEUJFAoiqIphFCRUCyKoijIqoqLZZFURTIqiKlBRFVFMIqoqUFxVRTIqoqLYIqRRxUilFgipFHFSKUtgipFHFSKtFgirij21Iq0WGKkUcVcUoABVxRRVxVpAxVxRgVYFAEUQFEFq4qoGKlHFSqjpkUBFOIoSK2ySRQEU4rQEVmlKIoCKcRQkVAkiqimkUBFAsihIppFCRUUsiqIpkVUVAuKqKZFVFKC4qRRxUipQXtqbaOKkUpQRU20cVIpRYdtSKOKm2rRYYqRR7akVaLBFXFHFSKtFhAq4ogKILQsIFXFEBVgUpAAUW2jC1YWrQXtqU3bV1aS3RK0BFPK0JWtMkEUBWnlaErQZytCRTytCVqKQRQkU4rQlalBJFCRTitUVqKTFVFOiqIqBMVIppWq20oKipFN21W2lBe2ptpm2ptpQXtqbaZtqbalBcVIpm2r21VKir20zbV7atBe2r20wLV7atIWFq9tM21e2lANtWBTAtWFq0WWFogtMC0QWqhW2pTttSg6JWgK1oK0JWjLMVoStaStAUorOVoClaStCVoMxWhK1oKUJWoM5WhK1oKUJSoEbarbWjZVbKFs+2q21o2VWylFkbarbT9lTZSlI21NtP2VNtKCNtTbT9lTZSgnbU2U/ZU2VaLJ21eynbKvZSiyQtWFpoSi2VSydtXspwSr2UQrbVhacEqwlUKC0QSmhKIJRCdlXTttSg3FaErWkrQlaxYzFaorTylCUq2EFaEpTytVtoM5ShKVo21W2qM2yq2VpK1WygzFKrZWnZU2VBl2VWytWypsoMuypsrV5dVsoM2ypsrTsqbKDNsqbK0bKmygz7KmytOypsqjPsqbK0bKm2gRsoglO21e2gSEqwlOC1e2gTtqwlNC0QSqFBasLTQtEFqJZW2pTtlVQt0TboTbrjXPHLjYAVR+8AWP03QK5HivjbrC7mJxy20Z/2xXzZ6vHiN3pjpsvOz1jwOSB8yBWd9VaBALoJMCWEE9ge/tXz3WXyXLxBxPX2nitVhgwVSTtgSBtJ+HoD1EmpPV5emo6aPb3xt0Jt1840PjF6wf2btGPS2RAPEHj6V2bf4iu3F3FthmJUCIjgqZ+4+3Wuv24iN4Z+vPt6zy6ry64drx+4FJZA4BgkHawxIkAEcfyNdLR+LC7AW3c3GIX05BE75nCAQS5gQea3HVacxyxOjnHhp8uq8usT+P2lcoy3AQSCYQiQYwQ2R7it/+rtgorMFZlR1VvSWRxKkTzIrca+E8SzOnnHMB8uq8uteygusq/EVX5kCtznEcudTLP5dTZRNqrQkm5bxk+tePvWHWeN2UAKkPOARx9TWctbDGLmW8dPLLaIbNlTZXFueJ33BCeUDA+HJODkE8CQenUVytTrtQy5c7T7AcR1x1P615p67CON3eOly8vT6nU27fxuo9pk/YZodJqrd0ehgT+7w32ry2ntYG6R3IPP24p1u2Fgr9Olcfv5Xxs6fViud3q9lV5dcK34tdWB8Xz/vzXR0/jKMwVwUnhiZX6npXpw6zTy2uv8ALhn0+eP9Wzy6mym27qMSoe3IE5uIBHzJit+n8Ma4u9Gsle4v2SP0au06+nHOUf7c40854iXK2VNleisfhq6V3s1tUjdu3BsfTH60vX+HaaxZ8x77EndsC243bfigE5jvIrll1ujH8TpHT6k+HC21AtdC7qNLbs2iVuM7CSC2z80bQuTPIkjO0nEitl/wgAtHmKYBFp/ILgf/ACbbnpHGY61mOv0p5uGp6XUcTbVhac1sr/6g29juUqf9rDB/n7VaAHgg/IzmvThq4Z/lm3HLDLHmCgtWFp+yr2VvuZJC1YWnBKsJWe5knbUp+yrp3D5k3iLiYLkdAOp+ZgRHWfpR3IuCUZSy8jP6gjPBpNvRtbUeXux0I/TaOMRigv2Lh/KkcgFRAx2IMH5V+Qx6nKPL7c4xJhJAyMdVxI9wO1TS2yDKAHqBujcBznofekE3wBk5K4NwsJA42tgYAxNabV8n1MomcFBHzkTnH8q749X7ZnBksaRmIxAmNxiBnNb206oYG5mz6uFI5BjmffI4q71+0DlgoI+AFQxPsSRkkx9K0PaDcKWEdyYHSR/xXf7OMp2Bt662xRXUADapcLEANloUDcNvQ5Mcjg9zwrULZuqzEeWVvo4STCXA67U3fEoJVgMcc5M+f3KpEKAfZVFEdYf+89prGWd8NRFN3iDpcaQu3pO4CYwDt4GIwDHana/xBr1qzauQy2t/lkklwrR6S3VRAj+1cm2GuY4B/McVrMJ/nSuc5zGy0cfGNQE8tb11Ux6fMuY7Rnj2rEdTtEcx1JNPfX7RzHt/xWVdUXMFnyQPuYpEzPIQbrE+kgZB4/Q02w5MiAR8u/tXTt6a2B6sn35+prFethW3KQy/ujkfIjmrGpE8C7KEgg4jrxUCESPSQeRI78j7CtKssSAOO9FpdHeukrbS27YEBtpEiRzP5c/LNI1JKZB3p6tTrotKFNoyZVbhdbg2sZyFCyBwATAJ4NZNXbvWfjtOT6sBWAxmASM9J7TWvkjyUYVnih/0x7ff/mq8L13ntstW7shdzFrbADIxJwZnEVtYdT/MisznPgpnTTmPYdego4CgEcxzkSPrVL3zA/n/AFoLtwnOYET2+9YnL2ptzxB7kbnuEgQA1xiI7Cai+IXV/M4IUqJzC9lngZPFY3YHpQMSsDBHbqPkelIHT0fjty2d0IWz6yoLCeYnEnvE/StWq8eN1ld9wI/MPU3z3E7j8pgdIrji3uyDP8xQnHf7Vq4kek0vi9hQcPcJiPMt2ABE9HW5PxHqKW2pslpAVTtENb84Z2j0kM0QDiR2xXCt5pitxn6e1TuriR6DQeLQdtxlYdGwG+vQ/pXbsXEf4WU9wDkfMdK8LuEx1PH+fejUlfUJBHWYIr1aX4hnjtlvDzanS45cbPe+VVi3Xn/DvHLoSH2vzDmZ+Rjn9KXd195zl2/2LCyeoxmPma9M/iOnW1y449HnM7vSbKleXXw9jk9e7f8AFSuH7Tn+X9f+Ov0f7v0eY/1THbs2RKgEO+evw7hiOOau3qwxgrcBjJNvb9jA9/8AM0l/AjbXzHuId5322kSQRPTP5hB6iD8mHQuq7Vuqs8hlLxiPzQY4+3zr4c44vW0BlOZx7yBHJj2k9qMoOqx0Dek/bA71i0dorIFzTsxgS7OmCIwpJjnAj9c1qt6a44BU2uSPTcDECczu95+1YyigGpsyYBttjhlEn7cVz7mjZIKI6Hk+VcKg4x6VYTnuDzXXbwm6RiJyZxtkR6ZxJ+XeuZqdJqkJ+IqDJiPUPzBSAYPYfSt6eXiJKMsXLwILtvGfQy22+RmBHFOt3VE7rRn+E7h9m/pNYP8AW3F+OzcMgRKcjo0gQeOa1abVAwIZCRhYjHHE/rXS8oVrW8DMGI5mB79DWHU3yGkhhMjcePpWjzlkglTggq235Ec/2pJsW5JRntseiuCpz/7bSDWsdaI5gmGW1cLmAOZj37feu54bpAoLECe5GAeoHf5/OsljR7CG3honLWyInttgDFbrjXBtP7BkyGBd0jopUwwMdjHzFdMtfHKKhIxa1Hsh/wDqKXcRYkjjt0paW2bPpEflFxG+UfQ1nvIzEr8KjnB56x3PvXDv9SUtbgUM1vcD+WCfT1Jn5gEDitmuJ0m69ZvG6V2Er+1VyGZFYwRjaMiDx8sc2/cCYU4HXNZCCJk5IUkkzHMAdBySft0rUZ+ZWJdXQ6577N5jW7ZE7CUtuCeInaG79T7c1r1utncouA7ty3bo22zPlqAUM4zg5/LXnHSIjJ9uSf6U9nJRUO30zgdz0P8AarGp5Iyej8H8P066a2o8xZUbru66Q0DKgOuFkYjmB2FZrVvTWLvlo7KhBLFkW4N5ZYPqBIwXnA6dq4Vt2yASJiSP0E+1FcTknPuWxP8AF16YFa+WZ4LenXS6Rg7DUhgonaRctgkglQpNsCSeJrk/h+w1+1fa6HRg5FuybYJdDMA+qQywQSQBxE5AwX7xtqlgGRgsw5LFYM+wHA7Vt8M1XlqURQ0kF2yOGBgZ9gPvTv8AC7W6H4e8Lt6lGvXTcsWwxX9qBbkAA7lMmVzEic1k8VXTJeNpDeVg6ooYLc8wGfUvwEDAwR+YVel1VsXzc/09iFBJPljefVvA3CCRIBAJMbR2ms+k029rr3MEwSu7hc/lzESKs5RHBQ9fpBp7gWNQy7dxupYG1DmFY78EwYHX7xs0+iRri2mdgzCU9BG70lo45gVztRqTZby7YO0nHrZhAmJOBPSYFH/4kzKG3jegQKwRRG0FQR1OIBzn+Sc4KdnX+FpprQuXiVBUZYmA5IUKQBI9WJ+VYfB9C917UL8RuKDsc8Q0rEyfiH2riarxi+9i3buXS1tHP7PAB9JMwZBhvUMc07SeKG29oS+x2dRtuMsFlaYjMkHpHFSZi4Grxm7aRrOoJd7fq3EKd84xtMQdrocxhhQ2PEbV9Ztrdj1QzsORO6QMDj9KSvidpbbLpdO25gQxu7TbUthhuuDc4JCznIUCa2anWki2oBUG2U2BVCCEztCmI3Fo9mNXOojYO0epLWZVQdrEEdJB9vY1ut6y56QioQfh2I7dOhHX5Vzvw7eBW8hBPqRvbAyBxmF/Wk+M6s3Lp8vzUtyihDccgQNpMKYzHFYiKgmXRu22JM27k+7XZ+fxVKqytwqCFvt/Fs3T3zUrHdPot8m0mqfzkYO4cMkXDcIKwQB6jMQB9Ir0Gj/ERsXFcXDeKksUYHa08kksSW9RMiMqPrhXwO6bx2WVAIMKznYDGGmZIHPEcU4eFalQ9oQqkzOAXJIEY/LAnj8p759PdjPlLBe8dNy6DIXcf3EO2TiAOuIrvXdLrQPLtWkuOZ2LbeSQCoeEMGJYDdAyMdK8t4d4bqRfRlS6m1ifM2NGOxHM8fWvd6nUqr2jaVgW8skq8FFQQttri4l2IJjGOMZzl2txFvE63xjUq4F5LittZQr+ajAEkQJ6A9B1pI/EGoDGT7kAsvBjBBzke/FfQvxB4iG0pt2UR23qDsNhiwgCWgHYm1SBlT6em0isFjwTT61rS2rfll127BZukgqRNtFLeraG3O8hRAiYNX92uGZxecufjO607Qqgoq7ZMhwM3JPLEzj39sps/iy+syS8n/aRzwyxH2613PE/wYLJOSQbasChtvKn1LFsxcOIjBMZNeS1nhb22YAMRkj8pHXIaDjOYpGOE+GZdtfxQhX1IS4n0kKcRPxRJgY70q/rFushsuV3EAKWVRMfCJ69ZOPeuA2mO0MYXMCcTAG765X70pVP/aD71Y08Y4HqTp9TbJJuDH7zFeAD1G0wJrbpb2oXM8x6u4PUD3znPH34PhHjRtRbfKE5ld3THOe3X6V7SxetHaz7LYjldsGcDcSDHTg9K4alxzBDKniYQncjxBJKicjoTWhPxJZIAbcA08wP1nmuinhtljDXMnMEvGRx/nb6VfiHhdq8mxvLIEwoa4CoPPHHArzd2nM8S1u5Nq7aun9kwYCDsPpIkYz/AJ9aJrZyWEGc8gj5g1l1/gS2lYgXFAg42kAgHqACJ4xnirs37o+JRcQRnII9sSeO/eu20xtLJwXc0A9zJkfrFaNKigzAb+X/AGqk0m4FkkgCYIyB79x7+1D5ZHOPvWJ2Q+C78ARMkAD3wB1Oaxau/vfAKqIIECe0/b/Oz2OIGAYJxyc5k8jiqWxAg7TMTyf16/SrE1CsLgkyeTJ4PNFaBEyc9R/QxW63pQc8Dv1PyFFb0YBxPuBgn5n/AJqRkgNHdg7ipaDMN1+Qn2PetumZGe5gjerCJByCMA/ehFgDoAccEk/c1QQLcWJWdoPpxlhGIjvNWNTw1Eydb1O5Ta2ekqp3+Uu+YWfXtkYPFcq/YRSrKzRB+JhnnnHuce1e18H/AArevgXLv7JSrYYE3DuA5XG3rzW25+ApABvpAyI0+fod810rL0u75G7F3NpLbu7FZKDKgdCxws46V2F8Oe2bPmLDKwbbM+qPpOOlev8AFPw7e0+AoKZi4mfcSsen9fnXMIB9JJ3dcAY+ufrWcs8vSMdnw9Ldxjlm3NtHRQCY3Tjryf0in3QTD2xBHLieNpBAJ5mWrUFEEdIjIgA8QR/QRUdREHPBBzjHMcD7Vjukcjw+zeW5Kjap3blaJbAERMDM+8dKO74ZvUM11sJtjlZhfhIOSCMnj7Cuk93BgEzknPJx9oq1fMEAAQAJ4wMATg1v5Mgq1dtW1CDV31AA9Oy0eckzPUmfrVVpWwpE7Hb+L1Z+1Sr8k+lcdw4zGDOYwY5jvFWHYYIj3K5+vakm8LjEMl4BNwtq8sI5wVO0En/DWvzdqsfLAQ7FbeXkE7oAYYDkzGDleMY5zjF0ySlzuJ7wzAcfP/M1Qsp+6VHseZyZjof196NNwGVH+4b1nAGdxPuf0+RDTT3HPbI64/zis8K52pu2sq95kDFNwUqGIXdCFhnJcjd2HtTtVdZ1Hl7Vt7dgtqoMyxlY4VTtAOcgmeca2sHGRjg7BjHPWMClXtM0mLxj+K2png/NT8jXSNWVuXa1+rS7qbU2VAG5nB2C0VBTcjWgYbCWwPZBJaIPN1mk0l68EsG4qCC9xWNy6VOwBrpdogFnfAg7QB7pe0jZYk4I+MiATJjJNO1PiepGnbS6dNNbtnaARuDAZGTt9RIMZ5681vHUa74nlzPFPB7DoGC3jbS5cVrzlbYt2lWXfaEAutBBG0j90AkiOJqvDrAt23s3VHmJcY2mVlVbQO0MWAbc2+RxGDnmN3/hbCwVuK9y6PO8tlgKNygBSjekidxJgGCOoEc/xXwxki2Hd7Sm4yjynAWST2gEnbx25xjtjlj7ZmnGsaB7m7y5YgSYkwCYyZgZIAmJP0rqeFapknerqPRKIACY9O6CZ6ZikeH6zU2lX/TeaAr27jJgjzl+ByoGY4gz+tenv/i17c3fLvNqnNsnzBbItKhQB1uKoksN6/Cu0le0trKL2SnO0+pa15xBcMCD61JLRwQS234B047Vqt+NKrIUPrgepGeRMdJn6xmK0eE+GP4kzbgEtpdUsbjHeLaoE+Ek7m+HmJgnMmOvqPCNIwAVrltkW9JRg0BSpDXHgKGacW14GMzuHHLGPK9suNeTzSCbl5WEy1smIJwGEwRj26e9OSy6C2uxbsuSbi7VuxkDch5MgduTnOOrrNBpjYL6e45ulLuCUZbWy5O9iQvFu2QScS5IE7VrkLr7Kwi3nuXZtgFVHllGDBiLgMSGCggj80yYxmYyquTtny6Op0uxlIVpIB+MWjIHqzkRg9aRpL9nKMGRhGHXafcYkD/Ppr1+q27bbvZuqVttuS7vlWAKmRjI/rWIOJEyR+aXycHMwT269IrG0RvDLparw/bGx0eeBlSfcA8iKzjTmZaZ7EER9KynUJsa0ARLqzOsliFwElyYXriD71qtaq3lic59LEtzyRk569sVjKI8LsOAPmesfyomYEQJHHuT34ploWiT61nsQYGBI4+ddPwzQ+Y4UNaMSdogkgfpnvWIhYhwnubcmf0mt34evK95Cr+r1EAQIMHPXPPbiuhrld2W5tDbVZjaZTs2ldoLIPi5nPsa5iafdc3aNbPmgsxd02eWu0ySqgTM7e+RXox04hqntxeuQSb94YP5k/mVNJ02quPtK6i6d3UPZZRBjouRM9e9ecvX72nJN5twYMSiO5AMclwq5yPnWXR3rNthqA+0gybDndbC+b5jeWwkhsAzAyQBwK6Y5T5Jr07r+O6pMuYG5wpOyG2kqe3bIz/fka3bec3Llm0bhABYMQTjAgNH6dKRqmNx3FxluWi1woCARG4kFhGTx3rG/gmncyV0kyZmw7deQSo7mQRW++KpKh0EsKCAy3APykMIjHQTPJxigS2nlKXY7yGIsgkgvuhPVxn7+1Yb3gtsQEGmIBkAacrtP70Tg8Uzw3RrYA9Q+IsBMkTOFJAgDoM9Oa5ZTj4Rvv6BrYXew9QwondGPimYzI+lLKLIO36ye0d/anarVi6IMyvwnBERktiZxxNIRvYH3OKxlsC2ryQJkk5HJOalNW4IyUnrAP8AapWB5PSeMW2Uq7bCQu4GVJn1gFREidp6jAroai+t62loG0yA78BWLMVjcSZxBOJAia42t8BtiLltVDIsPaKIUaCASGJlemcnJ7TXD1LX0/aKCh3bhbQDYBG6RGABIj6/umO/xxP5ZZe4trAAEAdIGB9OlVcQFtpfccEhemSIngmQe/Nea8N/EIuQl30t+/07yZ/zpXok1ClR5dx2BA3SirwQVgKSSJnJAmK5TpzHKr8kmduOy5JHbEDjA6cUSuYaZJkbSYAHecZ7dKHzM8N84H6xNGBnjvIz16AHJrEqAgzBA6f570Rt/wCRj9aMrjI6xiPuZ5qw3USB3IIxOAO3fBqWlFbfnHbMe3WngxBwO2B/WgIn1ZEfU/f/ADirumPtOcCTinJROqBZSPRmMkGOfY8mPesZtXLZL21BcbSpDGdw6hicGT04j7dFmnBHfr96pIWYMTyMj71rGaKZdJedzDoAQIBDgrE9DyD3xnPel67TO6wrLzwMwpndwe8/etZIJ4B+XEck/wAqG6FZSpWD82ECesGT0A4rV72hV57r6Z9ODc2sybjIJZF9MHd0A6e3aaT4d4BYt3gzKSg3Z3tHWPSsbpBjt1zxWxiwGJUchQCYHQSxJ+9YdQz7sliCQI/6p6ARP3qxll4a7pcvxvTDeh04KflXywxKhCILEZnJz1IrN/5puPcY3CLskE3Co3ttTYsGPSIAxA9813TqthWFB4/iAIyDjj8teX8e1Ftrr7RtZWYnGTgDb8pn716MJ7tphLt63QX7V+x5lt4ZBuu22YehC+0EdWCiSzCYlR1rQphVbBUgMrDZBXEN8sgZj7180XUNvDrg99qkTBnnHBr0HgWtvm4NMBbt5T17Qi2yoEl9gMllEHgknkVMtCJjYqHrhqORJBGIO2SeI/vjrTNOPVktn83SemfqK5Gu/EhuXLim5b2xdYKcsG3SwWVnLEsMDlsxFeo1tryDpNcukdNO9uxctBLivda9AvbbiMfzW98QcbO5iuHwSsxTKfFGO4KWM4KszGVGQrTyMDFdXw3xHT27TkBvMZhIAn0idsEGOZJ659hXmU07jbPPBMzB4j9fbmtBIUmQzdoEnnHykd6zdTsRNO3eNp7br5ltpB3ElVfA3CFmZBBrwWj8bO67ZKb1S47W2YmQssQvY/8AA7Z9NowIueYiiZiSpkn2jmJ5jirfxPTqrF7dnJzCzOMYIIKzn3rrGpe0wTNmaC557WwvDQAxyJOVk9JNOsElZ2tODEgyO3zoPDtTaCzZQelgSLbuEViYVH7CR0jk+9dPz7YBW7usuGVBcBDLksVkYmQGAgxK+xB1Swx6kgnaNhOFhZBJEdO+entWazpyyklSAIyWXE4gZycHHsa7mo0Mrc2E3Tu3Rhm+BgrCOJxPHFYFsC3uDQrDaW3c+rKwO2Bgf1rM4xKlFMxBjpiPpij1lny2AnkAx1gjqOh/uKrw7Si9dLr5h9IHqyAxImPsfv7UWr0hdioKiA3Rg05+ckx+lY7UJD/wk85zUrnnV2x0X6hv71KlQlsdxRvdYEAGBGB6iMDpivYfhTw+zcMXLVphxDW0YRsmMipUrr5hmHzrxm0q6xlUALuI2gACN4xHbArjaj03htx6rfGP5VKldUe104lQevfrx3pmmOG+TfeDUqV4pbhV1iNsE/Ef5mgnLfJf+qpUoH3rYLuCAQAYEDHpWlMMn3LT79qlSiLn1ke3/wCDRWMxPt/JalSorLqGIZACeWx9q2N0+v8AMVKlaZADk/X+lHb5+n9qlSqOT44oCrAAndMdcda8p44o8y4IGEtxjjPTtV1K9OjwjmaE+o/Jh9CpkV9D0NtfMOB8XYfuL/YVKlb1FcTm0znLZ9RycXHjP0H2Fb/xRqrlzSeHI7uyixpiEZmZQfLUSAcTBIqVKQ14P/CVwm5p1JJHlXfSSSMaa6Rj2IH2FO0F1tpMnhsye5qVK4asIxa1zuUSYg4mslxjvUSYLqCJxEDEdqlSrhwkvpv4p0tuxqLdqyiW0bT3i1u2qorENglVgE5P3NcSx6vEUVvUGsWAynIYbbZgg85zUqV2bcG3qXH+qh3G0grDH0ncwle2K9rY/aWCX9UW3I3eqDnOevvVVK4zyEWAAixj9owx22Ax96ZqcO0Y+XyFSpTAhjY5qqlSsyP/2Q==",
+          },
+        ],
+        guides: [
+          {
+            name: "Mountain Guides Azerbaijan",
+            location: "Baku",
+            price: "50-100 AZN/day",
+            rating: "⭐⭐⭐⭐⭐",
+            features:
+              "Certified guides, equipment rental, transportation included.",
+            website: "https://www.mountainguides.az",
+          },
+          {
+            name: "Caucasus Trekking Club",
+            location: "Gabala",
+            price: "40-80 AZN/day",
+            rating: "⭐⭐⭐⭐",
+            features: "Group tours, photography guidance, cultural insights.",
+            website: "https://www.caucasustrekking.az",
+          },
+          {
+            name: "Azerbaijan Adventure Tours",
+            location: "Sheki",
+            price: "60-120 AZN/day",
+            rating: "⭐⭐⭐⭐⭐",
+            features:
+              "Multi-day expeditions, camping equipment, local cuisine.",
+            website: "https://www.azadventuretours.com",
+          },
+          {
+            name: "Eco Trek Azerbaijan",
+            location: "Quba",
+            price: "45-90 AZN/day",
+            rating: "⭐⭐⭐⭐",
+            features: "Eco-friendly tours, small groups, wildlife spotting.",
+            website: "https://www.ecotrek.az",
+          },
+        ],
+        gear: [
+          {
+            name: "Hiking Boots",
+            desc: "Waterproof, ankle-support hiking boots for mountain terrain.",
+            price: "30-50 AZN/day",
+            image:
+              "data:image/jpeg;base64,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",
+            website: "https://www.trekkinggear.az/boots",
+          },
+          {
+            name: "Trekking Poles",
+            desc: "Adjustable carbon fiber trekking poles for stability.",
+            price: "10-15 AZN/day",
+            image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVUgC5qpdGQU59rIjTE2k0QEIuFKbvKpqwag&s",
+            website: "https://www.trekkinggear.az/poles",
+          },
+          {
+            name: "Backpack",
+            desc: "35-50L waterproof backpack with hip support.",
+            price: "15-25 AZN/day",
+            image:
+              "data:image/jpeg;base64,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",
+            website: "https://www.trekkinggear.az/backpacks",
+          },
+          {
+            name: "Tent",
+            desc: "2-3 person four-season mountain tent.",
+            price: "25-40 AZN/day",
+            image:
+              "data:image/jpeg;base64,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",
+            website: "https://www.trekkinggear.az/tents",
+          },
+          {
+            name: "Sleeping Bag",
+            desc: "-10°C comfort rating sleeping bag.",
+            price: "10-20 AZN/day",
+            image:
+              "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUUExIVFRUXGRcbGBgXGB4dHxsYGBgaGB8bGBoaHiggHxolHRkaJTEhJSkrLi4uGB8zODMtNygtLisBCgoKDg0OGhAQGy0lHSUtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAOAA4AMBIgACEQEDEQH/xAAbAAACAwEBAQAAAAAAAAAAAAAEBQIDBgEAB//EAD0QAAECBAQDBgQFAwQBBQAAAAECEQADITEEEkFRBWFxEyIygZGhBrHB8BRCUtHhI2LxFXKCkrIHFjNDwv/EABgBAAMBAQAAAAAAAAAAAAAAAAABAgME/8QAJBEAAgICAgIDAAMBAAAAAAAAAAECERIhMUEDYRMiUTJCgQT/2gAMAwEAAhEDEQA/APmqkhRClNlSAcuZgoC6QaqejeQgJTN3UkVNyLHTem8Xz5bFgMoqKs5G5CaO0CFSSaJ9LltdoziARLlAg5l9H16m0D5spNAoMfJ6A0jg5Zmi6QABmUgtobPXQG8MRcQACA+YhJQxDa5qnpRt94GSlQJdnO9SX06x3O73ANgztyipaq132gSAvmYYhs4ygtrX0d4qWAHGUjqf4iAKrkmJdPvnD2BIbxFCgNWiKi9o8tTgBgGPmX+kNAXLWXLF9HAYeX7xPESZjZlpLEips99OvvFNmDjU29jDThQlqOaaXS7Xy1vRnIGlNxaJbpWNBmGx01UtaDMGUd1KUAd6hSMrCzO5hDiyp+9X50pDxS0o7iVMdKmpvfb+YT4pQJJDO5eGhskcUoS8tCCXvtoOX7RSF3cuYhOKQaObOTvr5RdISQtJyZmD5SKdD1hUSE4bhMxYTQgrNHIAajG/P3gedhFSysKopJIPX9obcWxByoydxAIVlCmOZ600Z/YxXxycV9+jKdiGroLQoSb5G0Wz8NNlqSGS6QQFM+ckO1AKVA6tCLErOYhQAIowt0jWcS4i6VEAKSE5QRZyyXDirNfnCRYlrSDXPUkEeIm4DefSJjL0DQrFdvSJLlagOBca9T6w0wUuXNmgEZEMab0Dsd4IxacPLUhUkKWlu8Jlxd3H2KQ3PdUFCQTlABjazUiyWp2dXr5fbx3FYVugNSdAWylubvFeHABILkbp+6iL01Yi+fhilAXlGUlidiz1D22PKOiSZaXFSeVQ9m6gxX2zoyFRAcFmDbAk7tD3A4ZKJiClQmPQFX0ETJ0gEXD5aipghRzAhm+9YdSeFJAdSVHdI0/3c4e4yeElimholhcs5c6VhXjcfVDHKXcj+21WjFzlLgqqFHD8WPGqWktmqoFQY6ZXA8Ljz6QBiClnTR9K06xseP8AD1TUJPaqm4o582VICTLC1AqUEihzVrd+sZPiGD7OZMRU5CB1pf1jZVYNM8mdnGUAUBsw9OfnFU9ech1lVg5/mJSzRtTamvLnEpU4p/MM2hAev20PjgkLxaULy5CrYqUPC27VIY6CBsVISlj3sp8LkVo2nMGGUriUwMpMsJXlLqTcijq6HWKEcOVMZWYaEnZzqPc9axmpVyMUkHTSLELLvY2gnGoyuhmI2NA5sfSKV5he1nA5RonaEVFt9Y6qV3XYvT79Ytw8kE1D+1IIGIUU5CzAhzqw0vXSHYFUnDUv9jbrHcbJCFBjcC9TX5RKbPCjYJ5pHuY6iQkzEJQSr+4lquL6DX1hJ/ozRfhwZZzMDlJbXL6a2jMYhDFVBy5RrMfh8OCSSM7MAC70FTUNV/SMhiUEKIcmu8OJUiWGlhRSCKE+tCL7OIOwy1hROcVrQA0H5uopaKJmKGVKahVif07tq8X4ciTUsrK7V8TgRnJskjxhS5inWQ7EhjQuQbblzcxLGUlJqp2BZqDkNPKBcVi1TVk5WNkpFQkXYb1q/WC8UsmWh3UQ1S1SYqOqGd43xFRJS6SSBmISR7Gx6bwNhpaHOZZGranpzdhDTicibTMlyoZnIbTwj+0QJjpoyMpIByskBnDHXaukRF6SQmLZgLDulLavqT7W9oIw8lYSFFIYDOCfzJSpi2/TnAypSyklyUuBc3Z6cni0oWUh1Z0ApDA6kOwG4c+8WxFGJlfmrl0c11YdQ1dqRfKnuU/035Cxpl0rdjF6MNll5kk5jmBBAtZ+Tg6wJLmEskqCQdeT2LaOBD5APn4My3LJImOWYtlBzMDce8E/DeIHaIS3hBKT5kt1Y+0NsMe1lTUgABIAKb1zAUOqWLwDhMAZRzlTGoKQzHXWoMZOX1aZVDKYpMwBkKU6i76UGukLp86SjLnQXD/mB11+fpF2HxBCGZRLmjUJP+Yol4SWHUvRxlLVPJ9Iz45Gb/j3FMPgpaAoJlK7NQT2aO8Qo2cOA7Ak+cfH8ZNzLUo/mObpW0aL4kly1SyuWgKClOuYJUxID2SFTFEn/iGqIy2Vzt93joiuwmyyVMe5NLdPpHRIN20KvIaxfgpgQxKEqq/efa3SIT8U4yhmcs2j6DlSHu9EB/BZ2VSUlIKVlOdxXIC9Dz1Gwh9m7Rc3s098uoUqEgXDjlZtQIR8KClpYJB3UXeosz1FBblFuEnKSpgnatXuxf8Aa1I55q2ykEYnBZhlC8y6OMoD5mZ6mt4EnYBQPiSVOTlBqw5ikFcTxpSSyVAKP9RQLEm2mjC/yeFcyZqyqu6heoo9WhwyBkRhyKmhNIHBAILh9ixi2bPSU5WU4epOnOKUyiKs37RsvYjq54oyQC9xTSGXBwlM8KUHIZhfvEEWdzUjWFS5bhwebQ7+EsOFTVzCKS05iADyZm5j2htaCPJp+LyHlhZCe6C/druGcE7+0YSbNHaZg2kbniuJPZkqKUodhVyX0NdmuHrGCxJBmOKDX6wRLmE/h8yiqra9fPVoBWolRNW05QTMx+UshIA53fc84uThmQpSiAp/Dqd6eRMJWuSAaWAllVL+17Q3xiFGWkvcCjC/pCIpo4NrQ5xLZJaQ2Y5W3f8AzDGgmfLUtYDqAQllBRetjah/iBlSChaa5kXegoxFq6wZjFV8PfF3dlDY83gMpXMIBFLhrAEaCMYtiYTLw0oy8jqsSALEsdRzaLMRwNQWhSQnIwcbsk1NzsPOJ4VQAQlyDRmYgl/lDZWHnEAhSQgvmfu5diC2rvSMnNplUK8Xwpc3CyVWKErcANUH509oom/DxCApQAIZ2U9qlhz2h7jMQtCJaZalDKC638RrW0IsapSilSlKu5rvq/3aKUpPh6BpDbhWFSETUAFOeSsAH9TgAkxRxAsAVlJJYDLYZQz+2hj2CnHIcoDAd1631eBeIY0qZJSCtVO6XboW25QO3oCqYtJAHechxl1J9YXz0LI8JJT3lHluYdScCsqylSUpzAtmGZrU+9IB4scqjLBTSmbQvSp5baQ4y3SFRtf/AFDDSnLZaUapckvy/npHyqSh1eR9hH0T/wBRMaGoaWArsCQQ+7VraPnuC8VTofkY2jwzSfR6bmVQ7Uc26ROXhj+VJJFT5ftF8shyM3SkWYeZlWFM4/iG20tGJ2RMmS+9LVWmYEMO89G1atecTxWJmAVX3i3darU9L0hpikpmHtsyGDUFHD6jd4XyOJLQpS+zFQxKnZrAB4xUst0UV4HEvVSjs1TQ6P8ASLJgIDhRSk6ae8WLV3yAkAkMAK30c2gWaXcKKiQ9z7Cv28NbYEJd3UdaU+giWcFhlfcqr5gWiTgJYDS43+/nEZLJJbYxQitOFILCoD1+g2jSfC6coJSQnMWHOnzu0IEYdSiSDRhazRpeEJCZAzMklqt1NfIn1h2XBbCMYklK1PmClilXsB53f1jE4mX31MQwq/8AnWNLOxhKVJqRUuDS9RTreukIcEBmUSH5bhi46xXCCWyhcsEEnl1tHAD+ZyWYebfzFuIwqgpyK1PQaGL5cs91RNwkHl5dNYVkApkEEItR/UOD1aGnFyAlIKDYV5bQLigpUwup/C7nZktTlF3HM7d7LejPaGtjXB3C4laXTmcZXSTXq+7esd4ZM76kqXawsOlRvCvtyQlk+Fz9KQwkT/Cwymyuvza8Q40IY4eSQqqqi2VqDmYKxE4FLhIUrMAqrmj310vFGEw5vZJBch9edngvDYaWh3zKsSWNtLfvrHO3stBcnDJCVLmKzE1SDRgQ4ceUZniiSQ6Wy1NSKHUARtOJTAgSg7WoKkhjdjs14zmOxaJZKUJc6pLEEnUlm1g8cm2EkUYFaigMfUBiW0D0AhdiTMUv+pTnDT8UtScykJSoghNk0HSFasTMUXVMYVZ7U2jaPLJYZJSpaEoBY17xP5dD0eLUSkoGdRLAMM1HL6a1aKZMx0hCFKFPEeT33ESXPUUBJRmQxvSvnpSM5IaCviqehcrtEku+WqSCMoAq77X6xlOHpSZiQqgNHGj6xoPiaYWKakPcl7d2nMkEnpCDDhOlwCSY6Y/xZU+Q7F4IBZSlYZnvyf6QykJlJlHPlzA0IJLgihtVquKQpRML5lBzYWr5nWJJxd6F+pblrESi2qM7G03KJYBCVlhW1Rv3dtYT9itQqAwcAAvXkAPnEVYharNzHtr5RwyiAT3ALM9TzgjHELsOlqUAl5hL1KSWNPvSOqCeymGjuhg1T4nbUAU9YqUSoJbIwNk/zBMuUlKmCgFAE0dk6fX3hcDACm1FfetY8JLKHdIoP825wzwzFZdasqQSzO+jANrtyi/E4EhwVAkm6C7guSKin8w2xqIslEghRsLi0H/6mpMvKUDKoVbQnTlv6xUnLLBT3QpVRvoKX5xziMsuFZaVpo7EZqO7F/SKjsfBRKGVPidKtHsbt5sIBl4lSVOBrBBw6gjO3doHDhlEPU2NHpeJYDClaaM7qvpR6k9IqVJEnEYsl2cFiTXTZoZYLAibImrUshYKQhCSC5JDk7D9xFmE4GlKApaQSbMX0sT6wy438LHCmVMKu6sBYGzpcgncE+hEZqSd0NJmVEkpLEsoe1QaQRxJYWpJyqS6gPdosUt5neuSGLNQ2YdImhAXipCSWBmo/wDMRSZSRZMRIRRi9b784owqFZy8tRToTQA101EOB8PficX2apvZSgFqXMP6EHvMGqSDT10Ym/GXBZGGQheFmZpRACnUVEA1zB6sbedIjxpPlg4vbXQuk4lgUhNCNdFD9POGfw1KzoxGdK05ZTpUbFTtY09Yy07HpAvWh6GOYfj6kAhCy2xdq9IuX/PW4mama74mX3kHxASxRKwQGo6lW8oowiULOVITmLXD0u79dIVcSQZkx5Ss4KXASSR1qA4Naxpvhbg8pKSZ+ITLukpBZV3qk1L+Uc6gaXsF4nhE5C4BYDl5PGSXw4k8zZKasBqeUfScfw2Uo5ZUubiXq/glhv1G6idrQIn4TnmdLT3ESO46U0JDuoFuZU2waKj9exz2xNL4YjCZFTpssB8plJOaYQblIANeULMbNWuaZZR/TJJRnGUhIFM4Fo23D/h5K1rVJQFFKiO8ap5DNT0gk8CxBxSVrkEy0oKQwcvQVy3DQnvoK6PkfGMUqqG6now+nuYCwawAoEVLfOJY1IKyHAA9uXWOYQBwACSfKkdP9SHLYXhEJWtKQ4BNTsGLwRjsBLSaTCQwLAOTzgcrykAEZgaas+33rDHF4WYVUkrAcZsz8rO/s8ZybtbEJ+wDOMwHNvkOkXS8CWclAFxXmwJAeCjgZjkZC3Q2v8ovn4CckozS1d52DvXztSvlA5+woVTcPlPiB5Cu9XAguUglN7/vuWgnDcMmE5uzzO7BRYa1oXaGSsKlAzGSp8otWqrs53hS8qWuRpCaSAlBJJBJsNtDzoDrqYlJxykpvUEEE1N33pfVoKBnJul9LBw9ej9REUcMlqzAzcpqWKaBRY1YgW2LDWHkv7DBcDh1LVLIHcCgCaUJrpvDviiAnKGBLC9+8H16naOcK4alCgrtEzNRLYigpmUQzM/O/OCeITwXWlSQlVP+obu7iu5HpA/IhrgyOJnl8uYkAlhoxv8A8nbTzjR/DyB+FIVKKv6hZ6UyguHvURzBYOWlBmHKcwoSLjNpUChP3aDZ8uXOAQCpJCAoHdWoLUFqdYmc1LQRXYbgpUtQJmEIQl6IAJJdymp5taJcW4r+OUFLGTDSmSA4B2A6vfaEWLQmUkJE1SpYzZQe6xZ7/tBMmclKQqoSWYF/NvesZNuPA7G/xZgZCZIVLCApJTQKdTKuVF60Zn5xi+HzUpxUkuUgTUPyGYW8obcXxctkpTkKqnMA5SBU97m1oyf4glQULguOoLiN/DbjbCbR994XgpYmGX+GCkzB3pxUkug+JLUIsLO+vJH8b4TCy5E1MtJJykD9IYflAoIz3D/ijDSpSZgzqnE7MAR+UqFTR6FxyhZ8R/FgnoUlAIcMSdAYmKldUb3FRuzHqXRm56RCYsNYekcmEafL/Hyh58McBE95iy6EqAyhnJuytkn3jqlJRVs4lG2aX4Ww/YygucopSkJUBldyxUwuX0h6njiD/Ulye1DjvDLmAIdzRwQ/ziU3BhSXWUhqgsfDalPeKjgZHZoSHSHdJQWru31jglOPLOqKSG+D4zLNTOTlLUcggc3EOsKsFWdK0/2lgWOldmJ9YyU6TLWwJzMqqlgHRr0i7DhMkf01jV3oOjHnsIzzS3EdII4xwfEzphUJ6JANxKzOsszrJLO2oEBSPhuaFFsZlAAoEl3ArVxePK4jNcvNQ1BTn5c2eKsXxGYgOVBzZg9mJ0a0V8kumS4L9PmDZgTQs1GD+m3OL+HcPVnQsMEknvHRjU+3uIdS0pDkZRlHd7ijtUuL/vFsjDSQPE6FFySSzihZJ+6xs/K60jCgBeLw81YAT0Io1auLtrWLexRRQzFjfOq1+6x6Q1R+HTfIQCAGTtcVGxPOIYzHSbZCEvYXJFK0BFDWukQpPqyqIYPGJmuQkkpuTcHlZSjyqzwVLlLyOFEkHwlZc0Y3NAHNHq5gD8SnKnsiqWxD90U7zvWw89RAOO4gsmiikVJNyo7qPna0GLb0McL4lMl5QqxaiVWejOL6Wj2H4oZoZRUkVd1Eswdjmq9bg6dDCmapaWXMUSpgRWrkal6FtNzCydxFSnan2dY0XjC6NQVhSSkrWEhi4Y1JAqoG+4FKwB2yZqMqAVFLkqDB6AOWY6ip2tpAWGxqUyyFMpSq2dg/hJJZ9aWipOJQH7MG4Ayk23NL8ucGPNITaGvCCJSsyyyG6EEaJN+RvFGInpWAnOlRUwSa+gD7U2tFc2SlKUlyRq58Jrc1D3ryLQskzkiaC1BXe1j9YahexcB8iYQCFgZe8g6bjui/3ziuXjJiFggnKKVDAACltfmYhiXzZ1d0ULkUZVaNf+DHZMyUtCkEsHJHnp136RVWtjSsOHE83hAAJurU6u7On3gCc4FDmALnYG1PKKUozLZSwAGFBYCn31hrh8FLIOVRs6sygHAajbwsVEaTYqXLJBUnVw4GmsUSMLWl4a9jLNErHTbzevprFOPlmWkEO5LCny3i0+ga7ZRjsMlMvw1cGltrwqVNJGXSNHxDC4hCR20uhHMerOH5FoRoRlIKkkitGf7P7xqq6M2ewWBVMPKGuHlGUc0pZChqm3Q6HpWBk8RBZx1A5aResqoVFLnwoBoByABruTFkj7AfEK1KCFIGbkps3+0EUPKDuI8QRKAKgtHIl36aHq8YyfMINrajf5wzw3EVzJeVQKkhRKiBmJLUJDvrpHPPwxWzWHkb0HyOLEmmYDcg+zUi5WJUe9nVXQpLEeh51hYVpU2ZOwBUm4G5ct0rBrMMqQFAguHDN0a1xGThH8NKOha1Oy6FiaF6Ag5jFc6flp0q4sdzb2hficXJA8CSeVAOp18oVrxCXJcAHQfxDXjX4S6QSjELKqlxSjty9I6mUtR/Mz90gnSzDrGnPBUpdZmIUQHZLl2FGoNGqwrFP+nrPeSkg2ZTgMCa5QIeUehYiMYZlJBUHcqY/q3Naq6/WCpOGeiVdoss+UVNasLM+vKCjw1RfxOBXKgs5s29aHUe8HYLhS5DqSSFnulaiMo1BswA11vE52CiJMiCpSSqYMqvDlJ2q2z1uIuUmSCMxV/udJYdBr9vF+OxK/H3lpUE5VgBwDc0D2Abq7xFpJQ6UzF5lJBKEufMlmelIHY62CY4GZMX3ks4JvR3yuaB6wLicKtIDTEMqoYN++3yhmeyBVLMpSCXrzD3BLvRgNYmMGrLUGpNCQ4AoMgLHY1iroMTMnD7uS7NF+GISQwa7k3yjUc7l72hvh8BmtKzC1QAT/yZje4DVgiXwMkoKwHU75K1BdnBNGGwYmLchYirCrWpBATRKUiu5IUrMDcUNdGEBT05VEJs99fONDO4esZmYiuUAhTgUqxoWBgU4ZAAEymzCxrQBdCbP1tslJDcdChszUHuH+g9IPwWKKWCe70AP0gz/TipLoUEkOFAqZgN3NDsGeIyuHgVND1LuBpX3EDkgUWuDmXKCJiVEsCXFT9g7G0aP4BRIOJC5zhMsdokF/EjKbC7OVUH5Q9BCDGSw2YKUompzFySw01HWCuEYf8AEnsULEtawarZKczMEggEud2iei1yaT4o+IUYskTMPlSEtLUhQzpU75gphS3dtfyxKsQHKTMOcBwvKwCwaGiizgs+lTGlRgJKCZeKnqw8wUSFS8wPU5gXejQu4l8HzTnmSpuHngglIRMUFUv3SlIzUs/rF6IalyXYf4gmS00TMmk+NKikpSRTusQp/UF7wi4jP7QqmIZCiapAyt5WHneFkiZMQKEi4rSxtZ76aGOrxZVc/f7RrCCiZylYHNmEqfXpBEjMC4SeZ1P1ihnUK6wcpC0iqS36h/BLRRDKJk+tQUw4+FnKpg/Kcr28VWvTeE02ZpDb4YRSYoh090B9w5p6iJ8r+pXj/kPPw5CvAC1aqYvzLUHraFON4biVOWlpTsguPMgV84dZqeAk9NP36RZOxZWaoKejaUc5aDpzjmTZ0tJmNPB5puU/9hT7cRFPB5hdmLBzXTpr5RsZ8tOUOXJqAC5a3fegN6VMVnDIYnOggWDKTU7GjtfaK+RkfEh7gsBMutYIYUysArcKJLWytz5vBXYy8v6ilnyh/cnK7avakEIw6SRkQojQ5Qet1OC42NYmUqcZkEatewU5cK0rU7GMjYCVIIQRISdLk6BjUEks703Fdlk3gK5oK8UvNmYIQQUijv3QXelzal40aZqWAzKJHPYhsrjoHNQ0U46eRcuTRywbmphUvW8JNLaFSYr4dw7s0MpSTLL9wpdh/wAncPW0DYrCpC88mjpZlZsrkn9JAruYfYKWkv3TlDity2p0gbGYABzLSUn6mDInRnU4WckqUUJFXKu0cW3JKgK2Y7RdJkLWO/NQUu7BKsjs39TvDMP9xNrQdj+E5khSVLCsrEO4qK0NIyHEMDikAJVMzJFAbMOh5UjSLTJboJncWTnHaTM4F0oQkCmhYe1YljOKkIC5STLSzpULkEtQ0ArozwjTJSXcskXO/lrE5qA+UZylKcxD2poOhHrGuKIyYXh+JJKRmUqgrcVN1HLUuYLlcZlkdirDSpqFEEdoC4YKJKFoUFB6PWrQgnYgCoNbeUGcKwM5ZExEpRQnMHAoFZSGDmvlaHSWyW29Gg4Lg80t0ISlJKgAAohKRsSDzqTEsThZaVKUJSQ6WdSyas36R6aQ++DsZORhxLWAhICqKYqIWVF8rE68jD6fLTMXnKUkkAeEBgOUc82k9M1RgZHD05QkAOaEk1YVa42/TqBHZWDUCSJbEeEAgG4Y3I/xQRuuwa8tKgIs7OWoEBALXETmyjGzPiDEy3QMQS4omYRRWuU5qAbk+UKFcYnSFmaTLJBGYAguDqQBUc42mO4ZJXRSHAtS3UG3X5QuxPwlhlCssg/2m3OkOLXYOUujCY3jap0yYtRcrUSSee46R0GWpklKWuSwfo+5MNuI/AygT2M12/Ksedxp5Rm8Zw2fJJzy1AfqAdP/AGFI7I+SLOVxYQnAyylwSFfURUrEFKWdx8v4MBInnePdqYuyT0xT11hpwvinYy2KSp1O39rBzzNLQrlpFXLDTnakdWbpekRJJ6ZS0buTiEggF1OO6wchq0BI+cFKmhLqCsj0IUQlwWpetrc4z/A0qxExJDJloZ2IfpvGrxOGSKhY6EE+8czVHRCeti/8IVAZJm9fED5pJN3q0RVLAoApZ/tQXqHNGFvpBeHmlJdgoEkVDjp3Tz1iaCrxhJUHuxZJVa9LaGAsM4hxWoAWqqiAbPlD2Omv/ERFfEyTmE1QKswBcMHL8gDUdHPKFRkJIZjMJuDmoQzvTLZrP5QwGFIR3JYFXFXAegAUzuwNHDU88cH+hVsLRi5asylGbMJoGOUADUJSG3cn+YQcW4uJakqV3qHKh21uSC/l+0MpmGWAlCUoT3iyT3coJY1Iv0BtvbKfGiCJqXIUSj6mrjX9o0jBXQpuomok/GAKQEgAmzaDp9+jwwlcXGUlRoDQXUokCmlXN7WtHzbhywGFuf0jWYOeGZLOxqdPv7eHKKRkpM2OFmgpDtYDdqfOA+J4NKxUAwuk4xw2bzvbbfqesFScTmeurP6mnqIzoqwHBcJlzJNZEtWVWUEpS56sLjneF/8A7alImKWe0UC4KQQwCgxpcjoY1fC5oQggjxKUfdmD6xdkD7Vcchz9fu8O5LgdIy0v4Ow4KVy0BVu6tRUDrZ/m/Qw6TiRLUlKk5EWFO69Swy0HnFXB8VkXOlFKsoU6a6LqOjHrT0hjiglaVJWBUlJetGoSGrvCdvkFRfMwaVBykdf5FYoOGXLDy1UF0nToWinhGJWEKQpQUEhgeVvOusQxXFcikOzKzXIB7ra+cCQWNBO7ruR1HzH7RQieFkCymcKH13FoU4TiqAFkMxcirimx9mEUzuKhCw5BApmt3dX5u3oYdBY5Ks1xlUDUWbodtXgWetSTRXI29x9+8BT+KpIBdnSQrncBtzT3hdiOKAgF6nN6CnW5135QULIdLZaQ5BBNhpyFX6e0Z/iOKVLoosR4FgvmANUzAb0q/J7iOSeKAp6ijjZ7RTjMYlaA9QWp7uOf7RSRLZfiuEyJyay0pUfzJABFH0+y480C/hhKSyjMPQA/IPFR4sqUtOUulLpD0dPiynml6E/WHOD44lTEH9xGn2iTpi3GcBlqT/TNRsfmDr6QjxWFUkVFQQ5HONPxL4gTmOVIKg4AZ2roWtrrGfn4kkEqqVX58ouLfZLov+F37cKBIABdtXFjy18hGtnKzB339ozHwxLoVahx5nK31jWJl0AiJ8lR4F2GUZcx3UEk1YkecaGRiEu2ZZdiHq/N2v5QpMhyaQXgnSGem37RDNIyrR3DySR3koAysAoqJcl3JVTmyUhiTF+HRlB0poWqb763e/KK5LqUE7xppeGQkDKhNNWc+t4my7EZzqDEO4qWNaACjdXrt55X414eQlE1jTuqo16g8hp6R9GnTC0ZH4mkzly1gKASRZgXarFx01pDjKmTLaMAieRYwfh+JEC+kKVG8eSsC59P8x0YpmFjv/WTvDHDcboxNCC5G+8ZBSgbH1iwKUOfSE4IMjeSePjLW931HQxZiPiEKQUhWUt3SKOevrGA7c844rEE7xPxDzN5J+I9bEpAI/2ipJ5uw8o5N4+mvecldtgAK7bCMIcUqIdsd4PiHmzXYfjqkBQdwS4Nr3FP7hpT0gXF8WKr1I+Z5xnlTFlhXyETRhppslfo0PBCyGCuNZUpQmoSX6q36RSvihUKqIPyiscInH8o9YtTwadskecOoitnDxVRDEk/5eIq4ief+OvOCBwSZbtE+8TR8Pk3m+g/mD6hsDRj1AUFg1Tzf3iCsassMwAHnDFPAE6rVBEvgEoeIq8z+0FxCmJ0JlM6gVEka6Nenl6GKZhQD3XHmY0S/wAFKDFKVnpm9zSBV8Xk/wD1yfQAfIGHbChZhsDMX4UMNzQe8aDhvBUJ70w51eggA8TnHwSm6gn9o7nxatcvQQnYDtKJcsnKAAS5A5dYom8YSLrA/wCUKTwtaqzZivMxwYXDIvMSfN/YRNIezuI40DZzFRx81VpavOkEIxEj8oWr/an92himTNJATh1C1VqYMbE5UmkVr8HTY9wGMSmaMx6ff3aNF+MFyQ0fOuNTJktlyw+9HbyhYPiSeKDKP+Ff2jL42+Cs6Pqv+ooNHeB5s+WaEFtzHy//AFvE6LV5AD6RETsSS4Ex96w/iYfIbjHcNwazVCHOoIf2gCZwTCD8vqD8yIzBl4o1IX5mI/hMSdFesNQa7Jy9GmVwjD37Nx0H7wLM4XhnbIR99YTI4RiSXZju7e8Fo4Nij4poA5kqP35w69h/herhWHGh9Y4eGyR+T3iUvgMwhlT1nkP5eIq+G/71+v38oL9hXo92ElP5E+oj34qSNEeoePJ+Gkak+sTPw5KTVR9T/iDQUyCeLSR+0cHG5Q/MR5H2aPKwuETdUvyIJ9iTFZxWETZJUeSfqYdINnJnG0HwhZ6CIjiKz4ZSz1pFqOLosjDqPVh8ni2bicSfBh0gbsVc7gtBpDpgpm4hXhlhPUwUnh+LULpSOkTkYTHrq6kD+1Ify1fziwfCmMm+OYtThyFFR8mVryEFgosFVhFp/wDkxYT5hPzrA8yVgx456lnlmPuA0NkfBJTlznYtpex2NPeD5HwtIDOnM+tSBzpUivt5QskPBmY/G4VPgkqUdyAPqTBUrFTlURhkhwCHL0NdhGywvA5MtThAynUgJO9hbaGODwyBRq1LJo7VIsdud/KE5IpQMIOHY1X5UoHJIp6u/lDCX8I4hTCbPWkmrB+lo3IwwPioW0rl6K9YrQhFMirMLhgH05chpCyKwRkkfAsgB1zSpSrZVORqc6SnmKZhc3tB8j4bloDJlp3JUHcBi7OKvSxuI0SMQBYpc6WPVn+2iJ4ks5kkChJOlLu/SFkylFIWcNkEsPw8uhqQGYcjStqw7XgkV7iQoi5qo+p+cCyZoYBJZIax2G7PB0oKa7nc3+UFhRgVIiBw6dh7Q1ncImM6ShfJ2Pm4+sUJ4biDYSR1mH/8oI94DKgVMkbRYmX0ENMJ8OTS/az06d2UkO+ozLJ/8RBc7h2HZSEoKloFc01SCfcJNtIBqIiCR1iubjZSPEtCeqgIDTwiWsqKpSld7wqWsga5XJvf0gmRw6QksMPLB2yk6f4gpDUWDzOPYcWmZjslJPuA0Ur46n8sicrqGh8MGAP6aUCte7bTe/nEsJ3QQUhRGYkgm3RqXqX2g0GLM9Nx+KJZGGA6qduoYNA82bjCC7JAvkllXqouB6xsMHw+bNNBRgcxfKKHXUmho9+UMpvC8SlCkZwpCtEgDV690ny5CsO/QY+z59J4NiJgBXPWhJLVBSf+oIi+V8G5i65hZ+bqFQ4zNRx/MbT/AEmYjvZVqoHIIJZq0Z9XYD1iglgASQ+p8VKMQA9/kziDJjwQlw3wrh3UCkpADgqqolLAgHQEvp6sYPw3DZCEqyYaXMVYEuCnQHNmcNRy3lFisYBMKFIWlDsFqsS27011aC5YzBwqmlq6EvU6QrY0kTlYWTLyhkJAqm1mBNQbilX6RcoyU0CMra5bg0YUeA8iKA5VWIo42pzi0pBL5gk1ZyNBW4Z/fzgGT/FC6U7i1aNsX0jgxc13JAQDQcqUA5bn0iKJc7KZYnKUk2SsigFaFVQaW084giYrsyogqy2yt3iEvV7DpWopCGErxZcOac/3LbiJ4/CpCQsEEbsQN6OKvvCydOJSlWUggkFw+YAOWIo7sMu7Ui3Dzytu1DhgakM5LB3vcUGsMAhWlSCSS1tbl+lo6hgSxAJdKnOUimW532MQMlu87OdAHYtqzio0Isa7kz15mKszizBRcB665gz1PtCAHwuICjlQvPcMQRQXsS7Fqgs0Xy56QyVKKSTUAm7V8NAYpUoLS6QKOA7MA1X5NAE7BsQoFfdq5U4uwYC5ua/SABji5SFBJBpqASNruwiCpslixyLoHvcnUv7bwOmYEskJLkpIKVH3DXfanSOiQogsVqSklmHhdnBTcEaisABCMEpu6QXZyNd38rNExnSMxWzaFQJUxsAamA14hScoyFwRWqWcE3sHfnaPIxCl5e0KgB+rk7VuT1gASYLipkjJkJqCCfQjf7EETPiJQllXY5Uj84Ukhn1SFZgawokzkgOAGGnIF7EVjk1Pbn+mh5gST3NANC1PlFIzHGH+JEKDv3QCRckl+npBWA4+FzUoK8iVO1Q7gsH0q9oyyEvLJaiSMtKKfRTWrvS0NJ/C1oSiVNCAnNmWqSStSXFiGfZhakOkFmi4ulaXQuenIsEDMUoytqX8Q5Cv0zuGxRSkpcFyzpNDW7Ktaw949JWM39aQUpILHISX0ObM9r+LzgTFLVnISkpluwoXNt6j01goLGIxQuC+wKa20rQeUM+E8THdSUIJNApY7orUUDnzhTiJMuYoGQlaFmhSWsOZ+Vq+UDTMP+fKijhlVIcVVkOgckHeFQ7NdM41OJUJGVWR8yinKNC4qXFYjN+KAkMtCyttEHL69K2jMpnqZIyhQSaMBq6daE1oLw4OBCmCEl0hzQvmcAg0SAQDYesAUWYz4gnlhLHZoIqtZBJH9qdD19IG7FwQqaXLEEqqdXB0LmLVz5YXlWiYKCn7EkpNHpBCJcspzBCq/rI8KQKlIq23yhMaJowqwAc4VZn7x86B4BGFU5zICXL0JBpt7RLES3IIGSjg5zZyzejP/iLZWIKCXzrDHmAQxeoNN25DWAYSmQtAU4UGYAuBcPe4OkU4jicpJ70wZmNg5PkkFR84FxmNlzDmIVmIc5QwJYElKdHrB4kJURkzIcOpKgoHa/eLHzEIdlCMQglOVUwlQU6uzKUillP3kk0aj9LxxIYFRqA7KBLuA9Ukn2ePcPRNKl5ZRIKKZylJA1YO9GbzreI8BxkxRV+LWtAYBJSHJBcAVGUVCvF6QxFsmZ2oZBZiHCXFNCxu9XBItFeGxykzFI7KXMl1AXmCX1SXHhNKsKRWhRA7QGYQghitIHdScrfpO3+IZTOHyFElTdslKVNlCQAWP5qWLVeALAOKoSLpV2igk5UkEMqgL2KXq7COyOIKTlUkLHJyzuAa7aeQiE5ctlGakBRSQE5WapqGcksxq2u0dwWImAFSQhLOUKuDplJDJArqIAJ4ycuYoFTgOMqEUASzjL5ByYJTMlLFSoM9Ul+tw+hpFOMxCmlmZLmEd8pWgg5klvEHKgASalrbUhavEodExMtQU+VgfEnqA2Z9XtpEp2U1Qzw0pAAaaHKXuQAauO8bXoN4tIZJmPJQU93vlNXAoEmhIY1Z9KtCvDISpQSe0KDRib1cEOlt94tTLQCpBQ5dkhQLB1Cp3IJNDtDJOJxpUJgKEqJZu/Yp1DtR9ANRAkieVBSSlNhlJBpVnyh6j21ghcpRKlZSTmIFzQUKmGm3nEsSgl+650NU3A0gGf/Z",
+            website: "https://www.trekkinggear.az/sleeping-bags",
+          },
+          {
+            name: "GPS Device",
+            desc: "Handheld GPS with preloaded Azerbaijan trail maps.",
+            price: "20-30 AZN/day",
+            image:
+              "data:image/jpeg;base64,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",
+            website: "https://www.trekkinggear.az/gps",
+          },
+        ],
+        rules: [
+          {
+            title: "Leave No Trace",
+            text: "Pack out all trash, stay on marked trails, and respect wildlife.",
+          },
+          {
+            title: "Weather Preparedness",
+            text: "Check weather forecasts and be prepared for sudden changes in mountain conditions.",
+          },
+          {
+            title: "Proper Equipment",
+            text: "Always carry essential gear including navigation, first aid, and emergency supplies.",
+          },
+          {
+            title: "Local Regulations",
+            text: "Respect protected areas, obtain necessary permits, and follow local guidelines.",
+          },
+          {
+            title: "Group Safety",
+            text: "Never hike alone in remote areas and inform someone of your itinerary.",
+          },
+          {
+            title: "Cultural Respect",
+            text: "Respect local customs, traditions, and private property in mountain villages.",
+          },
+        ],
+        community: [
+          {
+            name: "Weekly Group Hikes",
+            desc: "Join our organized group hikes every Saturday in different regions.",
+          },
+          {
+            name: "Trail Maintenance",
+            desc: "Volunteer for trail maintenance and conservation projects.",
+          },
+          {
+            name: "Photography Club",
+            desc: "Share your mountain photography and join photography expeditions.",
+          },
+          {
+            name: "Beginner Workshops",
+            desc: "Learn essential trekking skills in our monthly workshops.",
+          },
+          {
+            name: "Mountain Festivals",
+            desc: "Participate in seasonal mountain festivals and cultural events.",
+          },
+          {
+            name: "Online Forum",
+            desc: "Connect with fellow trekkers in our active online community.",
+          },
+        ],
+      };
+
+      // Weather data
+      const weatherData = {
+        regions: [
+          {
+            name: "Greater Caucasus",
+            temp: "12°C",
+            condition: "☀️ Sunny",
+            warning: "None",
+          },
+          {
+            name: "Lesser Caucasus",
+            temp: "18°C",
+            condition: "⛅ Partly Cloudy",
+            warning: "None",
+          },
+          {
+            name: "Gabala Region",
+            temp: "15°C",
+            condition: "🌤️ Mostly Sunny",
+            warning: "None",
+          },
+          {
+            name: "Guba Region",
+            temp: "10°C",
+            condition: "🌧️ Light Rain",
+            warning: "Trail may be slippery",
+          },
+          {
+            name: "Shamakhi Region",
+            temp: "16°C",
+            condition: "☀️ Sunny",
+            warning: "None",
+          },
+          {
+            name: "Sheki Region",
+            temp: "17°C",
+            condition: "⛅ Partly Cloudy",
+            warning: "None",
+          },
+        ],
+      };
+
+      // Initialize the app
+      document.addEventListener("DOMContentLoaded", function () {
+        updateLanguage();
+      });
+
+      function setLang(lang) {
+        currentLang = lang;
+
+        // Store language preference
+        localStorage.setItem("preferredLanguage", lang);
+
+        updateLanguage();
+
+        // Update active language button
+        document.querySelectorAll(".lang-btn").forEach((btn) => {
+          btn.classList.remove("active");
+          if (btn.textContent.toLowerCase() === lang) {
+            btn.classList.add("active");
+          }
+        });
+      }
+
+      function updateLanguage() {
+        const t = translations[currentLang];
+
+        // Update all UI elements with safe checks
+        const elementsToUpdate = [
+          "headerSubtitle",
+          "homeTitle",
+          "navMain",
+          "navHome",
+          "navExplore",
+          "navTrails",
+          "navGuides",
+          "navGear",
+          "navTravel",
+          "navWeather",
+          "navMap",
+          "navInfo",
+          "navRules",
+          "navCommunity",
+          "trailDiscoveryTitle",
+          "trailDiscoveryDesc",
+          "expertGuidesTitle",
+          "expertGuidesDesc",
+          "qualityGearTitle",
+          "qualityGearDesc",
+          "interactiveMapsTitle",
+          "interactiveMapsDesc",
+          "openMaps",
+          "trekkingCommunityTitle",
+          "trekkingCommunityDesc",
+          "aiLoading",
+          "aiAssistantTitle",
+        ];
+
+        elementsToUpdate.forEach((id) => {
+          const element = document.getElementById(id);
+          if (element && t[id]) {
+            element.textContent = t[id];
+          }
+        });
+
+        // Special elements with innerHTML or different handling
+        const joinBtn = document.getElementById("joinCommunityBtn");
+        if (joinBtn && t.joinCommunityBtn) {
+          joinBtn.textContent = t.joinCommunityBtn;
+        }
+
+        // Update AI welcome message with HTML
+        const welcomeElement = document.getElementById("aiWelcomeMessage");
+        if (welcomeElement && t.aiWelcomeMsg) {
+          welcomeElement.innerHTML = t.aiWelcomeMsg;
+        }
+
+        // Update input placeholder
+        const aiInput = document.getElementById("aiInput");
+        if (aiInput && t.aiPlaceholder) {
+          aiInput.placeholder = t.aiPlaceholder;
+        }
+
+        // Update send button text
+        const sendBtn = document.querySelector(".ai-send-btn");
+        if (sendBtn && t.aiSendBtn) {
+          sendBtn.textContent = t.aiSendBtn;
+        }
+
+        // Update AI chat header
+        const aiHeader = document.querySelector(".ai-chat-header h3");
+        if (aiHeader && t.aiAssistantTitle) {
+          aiHeader.textContent = t.aiAssistantTitle;
+        }
+
+        // Re-render current screen content with translations
+        const activeScreen = document.querySelector(".screen.active");
+        if (activeScreen && activeScreen.id !== "homeScreen") {
+          renderScreenContent(activeScreen.id);
+        }
+      }
+
+      // Load saved language preference on page load
+      function loadLanguagePreference() {
+        const savedLang = localStorage.getItem("preferredLanguage");
+        if (savedLang && translations[savedLang]) {
+          currentLang = savedLang;
+
+          // Update button states
+          document.querySelectorAll(".lang-btn").forEach((btn) => {
+            btn.classList.remove("active");
+            if (btn.textContent.toLowerCase() === savedLang) {
+              btn.classList.add("active");
+            }
+          });
+
+          updateLanguage();
+        }
+      }
+
+      function showScreen(screenId) {
+        // Hide all screens
+        document
+          .querySelectorAll(".screen")
+          .forEach((s) => s.classList.remove("active"));
+
+        // Remove active class from all nav items
+        document
+          .querySelectorAll(".nav-item")
+          .forEach((item) => item.classList.remove("active"));
+
+        // Show selected screen
+        document.getElementById(screenId).classList.add("active");
+
+        // Add active class to corresponding nav item
+        const navItem = document.querySelector(
+          `.nav-item[onclick="showScreen('${screenId}')"]`
+        );
+        if (navItem) {
+          navItem.classList.add("active");
+        }
+
+        // Render content for the screen
+        if (screenId !== "homeScreen") {
+          renderScreenContent(screenId);
+        }
+      }
+
+      function renderScreenContent(screenId) {
+        const screen = document.getElementById(screenId);
+        const t = translations[currentLang];
+
+        let html = `<h1 class="screen-title">`;
+
+        switch (screenId) {
+          case "trailsScreen":
+            html += `🗺️ ${t.navTrails}</h1><div class="grid-3">`;
+            data.trails.forEach((trail) => {
+              // Check if translation exists for this trail
+              const translatedTrail =
+                t.trailsData && t.trailsData[trail.name]
+                  ? t.trailsData[trail.name]
+                  : null;
+              const displayName = translatedTrail
+                ? translatedTrail.name
+                : trail.name;
+              const displayDesc = translatedTrail
+                ? translatedTrail.desc
+                : trail.desc;
+              const displayRegion = translatedTrail
+                ? translatedTrail.region
+                : trail.region;
+
+              html += `
+                        <div class="detail-card">
+                            <img src="${trail.image}" alt="${displayName}" class="trail-image">
+                            <h3>${displayName}</h3>
+                            <p style="color:#b21f1f">📍 ${displayRegion}</p>
+                            <p>${displayDesc}</p>
+                            <div class="detail-meta">
+                                <span class="meta-item">${t.difficulty}: ${trail.difficulty}</span>
+                                <span class="meta-item">${t.length}: ${trail.length}</span>
+                                <span class="meta-item">${t.elevation}: ${trail.elevation}</span>
+                                <span class="meta-item">${t.bestSeason}: ${trail.season}</span>
+                            </div>
+                        </div>`;
+            });
+            html += `</div>`;
+            break;
+
+          case "guidesScreen":
+            html += `👨‍🦯 ${t.navGuides}</h1><div class="grid-2">`;
+            data.guides.forEach((guide) => {
+              // Check if translation exists for this guide
+              const translatedGuide =
+                t.guidesData && t.guidesData[guide.name]
+                  ? t.guidesData[guide.name]
+                  : null;
+              const displayName = translatedGuide
+                ? translatedGuide.name
+                : guide.name;
+              const displayLocation = translatedGuide
+                ? translatedGuide.location
+                : guide.location;
+              const displayFeatures = translatedGuide
+                ? translatedGuide.features
+                : guide.features;
+
+              html += `
+                        <div class="detail-card">
+                            <h3>${displayName}</h3>
+                            <p><b>${t.location}:</b> ${displayLocation}</p>
+                            <p><b>${t.price}:</b> ${guide.price}</p>
+                            <div class="difficulty-rating">${guide.rating}</div>
+                            <p>${displayFeatures}</p>
+                            <button class="website-link" onclick="contactGuide('${guide.website}')">📞 ${t.contactGuide}</button>
+                        </div>`;
+            });
+            html += `</div>`;
+            break;
+
+          case "gearScreen":
+            html += `🎒 ${t.navGear}</h1><div class="grid-3">`;
+            data.gear.forEach((item) => {
+              // Check if translation exists for this gear
+              const translatedGear =
+                t.gearData && t.gearData[item.name]
+                  ? t.gearData[item.name]
+                  : null;
+              const displayName = translatedGear
+                ? translatedGear.name
+                : item.name;
+              const displayDesc = translatedGear
+                ? translatedGear.desc
+                : item.desc;
+
+              html += `
+                        <div class="detail-card">
+                            <img src="${item.image}" alt="${displayName}" class="trail-image">
+                            <h3>${displayName}</h3>
+                            <p>${displayDesc}</p>
+                            <p><b>${t.price}:</b> ${item.price}</p>
+                            <button class="website-link" onclick="rentGear('${item.website}')">🛒 ${t.rentGear}</button>
+                        </div>`;
+            });
+            html += `</div>`;
+            break;
+
+          case "weatherScreen":
+            html += `⛅ ${t.navWeather}</h1><div class="grid-3">`;
+            weatherData.regions.forEach((region) => {
+              // Check if translation exists for this region
+              const translatedRegion =
+                t.weatherData && t.weatherData[region.name]
+                  ? t.weatherData[region.name]
+                  : null;
+              const displayName = translatedRegion
+                ? translatedRegion.name
+                : region.name;
+              const displayWarning = translatedRegion
+                ? translatedRegion.warning
+                : region.warning;
+
+              html += `
+                        <div class="detail-card">
+                            <h3>${displayName}</h3>
+                            <p style="font-size: 24px; margin: 10px 0;">${region.condition} ${region.temp}</p>
+                            <p><b>${t.warning}:</b> ${displayWarning}</p>
+                        </div>`;
+            });
+            html += `</div>`;
+            break;
+
+          case "rulesScreen":
+            html += `ℹ ${t.navRules}</h1><div class="grid-2">`;
+            data.rules.forEach((rule) => {
+              // Check if translation exists for this rule
+              const translatedRule =
+                t.rulesData && t.rulesData[rule.title]
+                  ? t.rulesData[rule.title]
+                  : null;
+              const displayTitle = translatedRule
+                ? translatedRule.title
+                : rule.title;
+              const displayText = translatedRule
+                ? translatedRule.text
+                : rule.text;
+
+              html += `
+                        <div class="detail-card">
+                            <h3>${displayTitle}</h3>
+                            <p>${displayText}</p>
+                        </div>`;
+            });
+            html += `</div>`;
+            break;
+
+          case "communityScreen":
+            html += `👥 ${t.navCommunity}</h1><div class="grid-3">`;
+            data.community.forEach((event) => {
+              // Check if translation exists for this community event
+              const translatedEvent =
+                t.communityData && t.communityData[event.name]
+                  ? t.communityData[event.name]
+                  : null;
+              const displayName = translatedEvent
+                ? translatedEvent.name
+                : event.name;
+              const displayDesc = translatedEvent
+                ? translatedEvent.desc
+                : event.desc;
+
+              html += `
+                        <div class="detail-card">
+                            <h3>${displayName}</h3>
+                            <p>${displayDesc}</p>
+                        </div>`;
+            });
+            html += `</div>`;
+            break;
+
+          case "mapScreen":
+            html += `🗾 ${t.navMap}</h1>
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d194473.18588939894!2d49.71064067424148!3d40.394507463038!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d6bd6211cf9%3A0x343f6b5e7ae56c6b!2sBaku%2C%20Azerbaijan!5e0!3m2!1sen!2s!4v1690000000000!5m2!1sen!2s" 
+                            width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy">
+                        </iframe>
+                    </div>`;
+            break;
+        }
+
+        screen.innerHTML = html;
+      }
+
+      function joinCommunity() {
+        window.open(
+          "https://mountainguide.az/en/tours/531-azerbaycan-trekking-turu-bazarduzu-qriz-xinaliq.html",
+          "_blank"
+        );
+      }
+
+      function contactGuide(website) {
+        window.open(website, "_blank");
+      }
+
+      function rentGear(website) {
+        window.open(website, "_blank");
+      }
+
+      // AI Chat Functions
+      function toggleAIChat() {
+        document.getElementById("aiChatBox").classList.toggle("active");
+      }
+
+      function handleKeyPress(event) {
+        if (event.key === "Enter") {
+          sendAIMessage();
+        }
+      }
+
+      // Enhanced AI responses for mountain trekking
+      const aiResponses = {
+        az: {
+          greeting:
+            "Salam! Mən AzTrek AI köməkçisiyəm. Azərbaycanda dağ turizmi haqqında suallarınıza cavab verə bilərəm.",
+          trails:
+            "Azərbaycanda məşhur trekking marşrutları: Şahdağ, Xınalıq, Göygöl, Tufandağ, Lahic, Qızılqaya və daha çoxu.",
+          guides:
+            "Sertifikatlı bələdçilər və turlar üçün Bələdçilər & Turlar bölməsinə baxa bilərsiniz.",
+          gear: "Trekking üçün əsas avadanlıq: Hiking ayaqqabıları, trekking çubuqları, çanta, çadır, yuxu çantası, GPS cihazı.",
+          weather:
+            "Hazırda dağlıq ərazilərdə hava şəraiti yaxşıdır. Lakin dağ havası tez dəyişə bilər, həmişə yoxlayın.",
+          rules:
+            "Dağ turizmi qaydaları: Təbiəti qoruyun, hava şəraitinə hazır olun, lazımi avadanlıq götürün.",
+          community:
+            "Həftəlik qrup yürüşlərinə qoşula, fotoqrafiya klubu, təmizlik tədbirləri və festivallarda iştirak edin.",
+          default:
+            "Bu mövzuda daha çox məlumat üçün müvafiq bölməyə baxa bilərsiniz.",
+        },
+        en: {
+          greeting:
+            "Hello! I am AzTrek AI assistant. I can answer your questions about mountain trekking in Azerbaijan.",
+          trails:
+            "Popular trekking trails in Azerbaijan: Shahdag, Khinalig, Goygol, Tufandag, Lahij, Gizilgaya and more.",
+          guides:
+            "For certified guides and tours, check the Guides & Tours section.",
+          gear: "Essential trekking gear: Hiking boots, trekking poles, backpack, tent, sleeping bag, GPS device.",
+          weather:
+            "Current weather conditions in mountain areas are good. But mountain weather can change quickly, always check.",
+          rules:
+            "Mountain trekking rules: Leave no trace, be weather prepared, carry proper equipment.",
+          community:
+            "Join weekly group hikes, photography club, cleanup events and festivals.",
+          default:
+            "For more information on this topic, you can check the relevant section.",
+        },
+      };
+
+      async function sendAIMessage() {
+        const input = document.getElementById("aiInput");
+        const message = input.value.trim();
+
+        if (!message) return;
+
+        addMessage(message, "user");
+        input.value = "";
+
+        document.getElementById("aiLoading").style.display = "block";
+
+        try {
+          // Simulate AI response with better context understanding
+          setTimeout(() => {
+            document.getElementById("aiLoading").style.display = "none";
+
+            const responses = aiResponses[currentLang];
+            let response = responses.default;
+
+            const lowerMessage = message.toLowerCase();
+
+            if (
+              lowerMessage.includes("salam") ||
+              lowerMessage.includes("hello") ||
+              lowerMessage.includes("hi")
+            ) {
+              response = responses.greeting;
+            } else if (
+              lowerMessage.includes("marşrut") ||
+              lowerMessage.includes("trail") ||
+              lowerMessage.includes("yol") ||
+              lowerMessage.includes("route")
+            ) {
+              response = responses.trails;
+            } else if (
+              lowerMessage.includes("bələdçi") ||
+              lowerMessage.includes("guide") ||
+              lowerMessage.includes("tur") ||
+              lowerMessage.includes("tour")
+            ) {
+              response = responses.guides;
+            } else if (
+              lowerMessage.includes("avadanlıq") ||
+              lowerMessage.includes("gear") ||
+              lowerMessage.includes("equipment")
+            ) {
+              response = responses.gear;
+            } else if (
+              lowerMessage.includes("hava") ||
+              lowerMessage.includes("weather")
+            ) {
+              response = responses.weather;
+            } else if (
+              lowerMessage.includes("qayda") ||
+              lowerMessage.includes("rule") ||
+              lowerMessage.includes("tip")
+            ) {
+              response = responses.rules;
+            } else if (
+              lowerMessage.includes("cəmiyyət") ||
+              lowerMessage.includes("community") ||
+              lowerMessage.includes("qrup")
+            ) {
+              response = responses.community;
+            }
+
+            addMessage(response, "bot");
+          }, 1500);
+        } catch (error) {
+          document.getElementById("aiLoading").style.display = "none";
+          addMessage(
+            currentLang === "az"
+              ? "Üzr istəyirəm, texniki səhv baş verdi. Yenidən cəhd edin."
+              : "Sorry, a technical error occurred. Please try again.",
+            "bot"
+          );
+        }
+      }
+
+      function addMessage(text, type) {
+        const messagesDiv = document.getElementById("aiMessages");
+        const messageDiv = document.createElement("div");
+        messageDiv.className = "ai-message " + type;
+        messageDiv.innerHTML = text;
+        messagesDiv.appendChild(messageDiv);
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+      }
+
+      // Add missing translations
+      function addMissingTranslations() {
+        // Add location, price, rating, region to Azerbaijani if missing
+        if (!translations.az.location) {
+          translations.az.location = "Yer";
+          translations.az.price = "Qiymət";
+          translations.az.rating = "Reytinq";
+          translations.az.region = "Bölgə";
+        }
+
+        // Add same for English if missing
+        if (!translations.en.location) {
+          translations.en.location = "Location";
+          translations.en.price = "Price";
+          translations.en.rating = "Rating";
+          translations.en.region = "Region";
+        }
+      }
+
+      // Initialize page when DOM is loaded
+      document.addEventListener("DOMContentLoaded", function () {
+        addMissingTranslations();
+        loadLanguagePreference();
+        updateLanguage();
+      });
+    </script>
+  </body>
+</html>
